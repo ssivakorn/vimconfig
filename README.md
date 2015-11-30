@@ -1,6 +1,4 @@
 # vimconfig
-my vim configuration
-====================
 a simple .vimrc configuration for linux and mac includes:
 * **vim-pathogen** plugin managing plugin
     https://github.com/tpope/vim-pathogen
