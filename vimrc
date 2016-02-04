@@ -212,6 +212,8 @@ let g:syntastic_check_on_wq = 0
 " syntax checker: https://github.com/scrooloose/syntastic/wiki/Syntax-Checkers
 let g:syntastic_python_checkers = ['pylint']
 let g:syntastic_python_pylint_args = '-d C0111'
+"-d C0103'
+" Disable some verbosy syntax checkers
 let g:syntastic_python_python_use_codec = 1
 let g:syntastic_c_compiler = 'clang'
 let g:syntastic_html_checkers = ['w3']

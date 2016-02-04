@@ -3,9 +3,11 @@ a simple .vimrc configuration for linux and mac includes:
 * **vim-pathogen** plugin managing plugin
     https://github.com/tpope/vim-pathogen
 * **vim-airline** nice and light status line with pure vim script
-    https://github.com/bling/vim-airline
-* **vim-airlineish** beautiful vim-airline theme
-    https://github.com/paranoida/vim-airlineish
+    https://github.com/vim-airline/vim-airline
+* **vim-airline-themes** vim airline theme set
+    https://github.com/vim-airline/vim-airline-themes.git
+* **vim-pandoc**
+    https://github.com/vim-pandoc/vim-pandoc
 * **vim-taglist** listing all functions in the code
     http://vim-taglist.sourceforge.net/
 

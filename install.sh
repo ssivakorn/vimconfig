@@ -38,18 +38,24 @@ curl -LSso "${AUTOLOAD_PATH}/pathogen.vim" https://tpo.pe/pathogen.vim
 echo "[+] vim-airline"
 airline="${BUNDLE_PATH}/vim-airline"
 rm -rf ${airline}
-git clone https://github.com/bling/vim-airline ${airline}
+git clone https://github.com/vim-airline/vim-airline.git ${airline}
 
-echo "[+] vim-airline colors"
-airlineish="${BUNDLE_PATH}/vim-airlineish"
-rm -rf ${airlineish}
-git clone https://github.com/paranoida/vim-airlineish.git ${airlineish}
+echo "[+] vim-airline themes"
+airline_themes="${BUNDLE_PATH}/vim-airline-themes"
+rm -rf ${airline_themes}
+git clone https://github.com/vim-airline/vim-airline-themes.git ${airline_themes}
 
 
 echo "[+] vim-syntastic"
 syntastic="${BUNDLE_PATH}/syntastic"
 rm -rf ${syntastic}
 git clone https://github.com/scrooloose/syntastic.git ${syntastic}
+
+echo "[+] vim-pandoc"
+pandoc="${BUNDLE_PATH}/vim-pandoc"
+rm -rf ${pandoc}
+git clone https://github.com/vim-pandoc/vim-pandoc.git ${pandoc}
+
 
 echo "[+] vim-taglist"
 mkdir -p ${PLUGIN_PATH}
