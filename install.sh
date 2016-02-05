@@ -56,6 +56,10 @@ pandoc="${BUNDLE_PATH}/vim-pandoc"
 rm -rf ${pandoc}
 git clone https://github.com/vim-pandoc/vim-pandoc.git ${pandoc}
 
+echo "[+] vim-pandoc-syntax"
+pandocsyn="${BUNDLE_PATH}/vim-pandoc-syntax"
+rm -rf ${pandocsyn}
+git clone https://github.com/vim-pandoc/vim-pandoc-syntax.git ${pandocsyn}
 
 echo "[+] vim-taglist"
 mkdir -p ${PLUGIN_PATH}

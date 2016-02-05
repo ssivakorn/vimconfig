@@ -181,6 +181,17 @@ autocmd FileType tex :set tw=78
 
 " ================ Plugins  =========================
 
+" ================ Pandoc
+augroup pandoc_syntax
+    au! BufNewFile,BufFilePRe,BufRead *.md set filetype=markdown.pandoc
+augroup END
+autocmd FileType md :set tw=80
+autocmd FileType md
+        \ colorscheme PaperColor |
+        \ call SetColor() |
+        \ call SetCursorStyle()
+
+
 " ================ Airline
 "let g:airline#extensions#tabline#enabled = 1
 "let g:airline#extensions#tabline#left_sep = ' '
