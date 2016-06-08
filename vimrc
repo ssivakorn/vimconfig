@@ -97,7 +97,7 @@ call pathogen#helptags()
 
 set number                      "Line numbers are good
 set backspace=indent,eol,start  "Allow backspace in insert mode
-set history=1000                "Store lots of :cmdline history
+set history=100                 "Store lots of :cmdline history
 set showcmd                     "Show incomplete cmds down the bottom
 set showmode                    "Show current mode down the bottom
 set gcr=a:blinkon0              "Disable cursor blink
@@ -193,23 +193,25 @@ autocmd FileType md
 
 
 " ================ Airline
+"let g:airline_powerline_fonts=1
 "let g:airline#extensions#tabline#enabled = 1
-"let g:airline#extensions#tabline#left_sep = ' '
-"let g:airline#extensions#tabline#left_alt_sep = '|'
+"let g:airline#extensions#tabline#left_sep = ''
+"let g:airline#extensions#tabline#right_sep = ''
+let g:airline_left_sep=''
+let g:airline_right_sep=''
 set laststatus=2
-let g:airline_powerline_fonts=1
 
 
 " ================ Airlineish
-"let g:airline_theme = 'airlineish'
-let g:airline_theme = 'powerlineish'
+let g:airline_theme = 'airlineish'
+"let g:airline_theme = 'powerlineish'
 
 " ================ Syntastic
 highlight SyntasticWarning NONE
 highlight SyntasticError NONE
 let g:syntastic_echo_current_error = 1
-let g:syntastic_error_symbol='xx'
-let g:syntastic_warning_symbol='>>'
+let g:syntastic_error_symbol='!!'
+let g:syntastic_warning_symbol='??'
 let g:syntastic_style_error_symbol='>>'
 let g:syntastic_style_warning_symbol='>>'
 "set statusline+=%#warningmsg#
