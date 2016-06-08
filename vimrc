@@ -197,10 +197,13 @@ autocmd FileType md
 "let g:airline#extensions#tabline#enabled = 1
 "let g:airline#extensions#tabline#left_sep = ''
 "let g:airline#extensions#tabline#right_sep = ''
+"let g:airline#extensions#tabline#left_alt_sep = '|'
+
 let g:airline_left_sep=''
 let g:airline_right_sep=''
-set laststatus=2
+let g:airline_exclude_preview=1
 
+set laststatus=2
 
 " ================ Airlineish
 let g:airline_theme = 'airlineish'
