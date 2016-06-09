@@ -56,6 +56,11 @@ pandoc="${BUNDLE_PATH}/vim-pandoc"
 rm -rf ${pandoc}
 git clone https://github.com/vim-pandoc/vim-pandoc.git ${pandoc}
 
+echo "[+] vim-nerdtree"
+nerdtree="${BUNDLE_PATH}/nerdtree"
+rm -rf ${nerdtree}
+git clone https://github.com/scrooloose/nerdtree.git ${nerdtree}
+
 echo "[+] vim-pandoc-syntax"
 pandocsyn="${BUNDLE_PATH}/vim-pandoc-syntax"
 rm -rf ${pandocsyn}

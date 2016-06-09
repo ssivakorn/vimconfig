@@ -202,12 +202,17 @@ autocmd FileType md
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_exclude_preview=1
-
 set laststatus=2
-
-" ================ Airlineish
-let g:airline_theme = 'airlineish'
 "let g:airline_theme = 'powerlineish'
+
+" ================ Nerdtree
+" open vi nerdtree when vi starts up
+" autocmd vimenter * NERDTree
+" toggle Ctrl + t to open and close Nerdtree
+map <C-t> :NERDTreeToggle<CR>
+" close vi if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 
 " ================ Syntastic
 highlight SyntasticWarning NONE
