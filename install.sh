@@ -70,6 +70,3 @@ echo "[+] vim-taglist"
 mkdir -p ${PLUGIN_PATH}
 curl -LSso "${PLUGIN_PATH}/taglist.vim" https://raw.githubusercontent.com/vim-scripts/taglist.vim/master/plugin/taglist.vim
 
-#echo "[+] vim python syntax highlight"
-# credit: https://github.com/hdima/python-syntax
-#curl -LSso "${SYNTAX_PATH}/python.vim" https://raw.githubusercontent.com/hdima/python-syntax/master/syntax/python.vim

@@ -213,27 +213,22 @@ map <C-t> :NERDTreeToggle<CR>
 " close vi if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-
 " ================ Syntastic
+" syntax checker: https://github.com/scrooloose/syntastic/wiki/Syntax-Checkers
 highlight SyntasticWarning NONE
 highlight SyntasticError NONE
 let g:syntastic_echo_current_error = 1
-let g:syntastic_error_symbol='!!'
-let g:syntastic_warning_symbol='??'
+let g:syntastic_error_symbol='xx'
+let g:syntastic_warning_symbol='!!'
 let g:syntastic_style_error_symbol='>>'
 let g:syntastic_style_warning_symbol='>>'
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
 "let g:syntastic_always_populate_loc_list = 1
 "let g:syntastic_auto_loc_list = 1
 "let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" syntax checker: https://github.com/scrooloose/syntastic/wiki/Syntax-Checkers
 let g:syntastic_python_checkers = ['pylint']
-let g:syntastic_python_pylint_args = '-d C0111'
-"-d C0103'
+let g:syntastic_python_pylint_args = '-d C0111 -d C0326 -d C0103'
 " Disable some verbosy syntax checkers
 let g:syntastic_python_python_use_codec = 1
 let g:syntastic_c_compiler = 'clang'
