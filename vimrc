@@ -215,6 +215,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " ================ Syntastic
 " syntax checker: https://github.com/scrooloose/syntastic/wiki/Syntax-Checkers
+let g:syntastic_mode_map = { 'mode': 'active',
+                           \ 'active_filetypes': ['python', 'html', 'javascript'],
+                           \ 'passive_filetypes': ['java'] }
 highlight SyntasticWarning NONE
 highlight SyntasticError NONE
 let g:syntastic_echo_current_error = 1
