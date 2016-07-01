@@ -8,10 +8,10 @@ a simple .vimrc configuration for linux and mac includes:
     https://github.com/vim-airline/vim-airline-themes.git
 * vim-nerdtree traverse directory easier
     https://github.com/scrooloose/nerdtree
-* **vim-pandoc**
-    https://github.com/vim-pandoc/vim-pandoc
 * **vim-taglist** listing all functions in the code
     http://vim-taglist.sourceforge.net/
+* ~~**vim-pandoc**~~
+    ~~https://github.com/vim-pandoc/vim-pandoc~~
 
 Configuration
 -------------
