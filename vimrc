@@ -251,6 +251,11 @@ let g:tagbar_autopreview = 1
 let g:tagbar_autoclose = 1
 
 " ================ Supertab
-let g:SuperTabDefaultCompletionType = "<c-n>"
-let g:SuperTabContextDefaultCompletionType = "<c-n>"
+let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 
+" ================ DelimitMate
+let delimitMate_expand_cr = 1
+let delimitMate_jump_expansion = 1
+
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
