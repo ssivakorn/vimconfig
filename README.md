@@ -42,7 +42,7 @@ Installation
 ------------
 ```shell
 $ chmod +x vcf_installer.sh
-$ sh vcf_installer.sh
+$ ./install
 ```
 
 Ctag must be installed to enable taglist:
@@ -58,4 +58,10 @@ sudo yum install ctags
 ```shell
 $ brew install ctags
 $ alias ctags="`brew --prefix`/bin/ctags"
+```
+
+To Uninstall
+------------
+```shell
+$ ./uninstall
 ```
