@@ -184,7 +184,7 @@ autocmd FileType tex :set tw=78
 " ================ IndentLine
 let g:indentLine_enabled = 1
 let g:indentLine_color_term = 239
-
+"let g:indentLine_char = '|'
 
 " ================ Airline
 "let g:airline_powerline_fonts=1
@@ -249,3 +249,8 @@ nmap <C-t> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
 let g:tagbar_autopreview = 1
 let g:tagbar_autoclose = 1
+
+" ================ Supertab
+let g:SuperTabDefaultCompletionType = "<c-n>"
+let g:SuperTabContextDefaultCompletionType = "<c-n>"
+

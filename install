@@ -72,4 +72,20 @@ rm -rf ${indentLine}
 git clone https://github.com/Yggdroot/indentLine.git ${indentLine}
 
 
+echo "[+] vim-supertab"
+supertab="${BUNDLE_PATH}/supertab"
+rm -rf ${supertab}
+git clone https://github.com/ervandew/supertab.git ${supertab}
+
+
+echo "[+] vim-delimitMate"
+delimitMate="${BUNDLE_PATH}/delimitMate"
+rm -rf ${delimitMate}
+git clone https://github.com/Raimondi/delimitMate.git ${delimitMate}
+
+#echo "[+] vim-javacomplete2"
+#javacomplete2="${BUNDLE_PATH}/vim-javacomplete2"
+#rm -rf ${javacomplete2}
+#git clone https://github.com/artur-shaik/vim-javacomplete2.git ${javacomplete2}
+
 

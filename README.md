@@ -10,6 +10,9 @@ a simple .vimrc configuration for linux and mac includes:
     https://github.com/scrooloose/nerdtree
 * **vim-taglist** listing all functions in the code
     http://vim-taglist.sourceforge.net/
+* **vim-supertab** autocomplete with tab
+* **vim-delimitMate** smart closing quotes, parenthesis, brackets, etc.
+    https://github.com/Raimondi/delimitMate
 * ~~**vim-pandoc**~~
     ~~https://github.com/vim-pandoc/vim-pandoc~~
 
