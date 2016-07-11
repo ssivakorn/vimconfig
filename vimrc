@@ -117,7 +117,7 @@ if $COLORTERM == 'gnome-terminal'
 endif
 
 " ================ Fancy Colorscheme ================
-set background=dark
+"set background=dark
 
 "turn on syntax highlighting
 syntax on
@@ -168,7 +168,7 @@ call SetColor()
 call SetCursorStyle()
 
 autocmd FileType tex
-        \ colorscheme harlequin |
+        \ colorscheme molokai |
         \ call SetColor() |
         \ call SetCursorStyle()
 "autocmd FileType python colorscheme molokai
@@ -257,5 +257,10 @@ let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 " ================ DelimitMate
 let delimitMate_expand_cr = 1
 let delimitMate_jump_expansion = 1
+
+" ================ IndentLine
+let g:indentLine_enabled = 1
+let g:indentLine_color_term = 239
+let g:indentLine_fileTypeExclude = ['tex']
 
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
