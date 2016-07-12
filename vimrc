@@ -117,7 +117,7 @@ if $COLORTERM == 'gnome-terminal'
 endif
 
 " ================ Fancy Colorscheme ================
-set background=dark
+"set background=dark
 
 "turn on syntax highlighting
 syntax on
@@ -168,7 +168,7 @@ call SetColor()
 call SetCursorStyle()
 
 autocmd FileType tex
-        \ colorscheme harlequin |
+        \ colorscheme molokai |
         \ call SetColor() |
         \ call SetCursorStyle()
 "autocmd FileType python colorscheme molokai
@@ -181,16 +181,10 @@ autocmd FileType tex :set tw=78
 
 " ================ Plugins  =========================
 
-" ================ Pandoc
-augroup pandoc_syntax
-    au! BufNewFile,BufFilePRe,BufRead *.md set filetype=markdown.pandoc
-augroup END
-autocmd FileType md :set tw=80
-autocmd FileType md
-        \ colorscheme PaperColor |
-        \ call SetColor() |
-        \ call SetCursorStyle()
-
+" ================ IndentLine
+let g:indentLine_enabled = 1
+let g:indentLine_color_term = 239
+"let g:indentLine_char = '|'
 
 " ================ Airline
 "let g:airline_powerline_fonts=1
@@ -208,8 +202,8 @@ set laststatus=2
 " ================ Nerdtree
 " open vi nerdtree when vi starts up
 " autocmd vimenter * NERDTree
-" toggle Ctrl + t to open and close Nerdtree
-map <C-t> :NERDTreeToggle<CR>
+" toggle Ctrl + l to open and close Nerdtree
+map <C-l> :NERDTreeToggle<CR>
 " close vi if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
@@ -239,11 +233,37 @@ let g:syntastic_html_checkers = ['w3']
 
 
 " ================ Taglist
-"let Tlist_Display_Prototype=1
-let Tlist_Exit_OnlyWindow=1
-"let Tlist_WinWidth=50
-"let Tlist_Auto_Open=1
+"map <C-t> :TlistToggle<CR>
+""let Tlist_Display_Prototype=1
+"let Tlist_Exit_OnlyWindow = 1
+"let Tlist_Auto_Highlight_Tag = 1
+"let Tlist_GainFocus_On_ToggleOpen = 1
+"let Tlist_Enable_Fold_Column = 1
+"let Tlist_Inc_Winwidth = 0
+"let Tlist_Compact_Format = 1
+"let Tlist_Close_On_Select = 1
+"let Tlist_Use_Right_Window = 1
+
 "autocmd BufWritePost *.cpp :TlistUpdate
 "autocmd BufWritePost *.c :TlistUpdate
 
+" ================ Tagbar
+nmap <C-t> :TagbarToggle<CR>
+let g:tagbar_autofocus = 1
+let g:tagbar_autopreview = 1
+let g:tagbar_autoclose = 1
 
+" ================ Supertab
+let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+
+" ================ DelimitMate
+let delimitMate_expand_cr = 1
+let delimitMate_jump_expansion = 1
+
+" ================ IndentLine
+let g:indentLine_enabled = 1
+let g:indentLine_color_term = 239
+let g:indentLine_fileTypeExclude = ['tex']
+
+autocmd FileType java setlocal omnifunc=javacomplete#Complete

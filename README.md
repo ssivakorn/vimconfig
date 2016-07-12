@@ -10,6 +10,9 @@ a simple .vimrc configuration for linux and mac includes:
     https://github.com/scrooloose/nerdtree
 * **vim-taglist** listing all functions in the code
     http://vim-taglist.sourceforge.net/
+* **vim-supertab** autocomplete with tab
+* **vim-delimitMate** smart closing quotes, parenthesis, brackets, etc.
+    https://github.com/Raimondi/delimitMate
 * ~~**vim-pandoc**~~
     ~~https://github.com/vim-pandoc/vim-pandoc~~
 
@@ -42,7 +45,7 @@ Installation
 ------------
 ```shell
 $ chmod +x vcf_installer.sh
-$ sh vcf_installer.sh
+$ ./install
 ```
 
 Ctag must be installed to enable taglist:
@@ -58,4 +61,10 @@ sudo yum install ctags
 ```shell
 $ brew install ctags
 $ alias ctags="`brew --prefix`/bin/ctags"
+```
+
+To Uninstall
+------------
+```shell
+$ ./uninstall
 ```
