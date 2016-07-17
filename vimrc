@@ -168,9 +168,11 @@ call SetColor()
 call SetCursorStyle()
 
 autocmd FileType tex
-        \ colorscheme molokai |
+        \ colorscheme PaperColor |
         \ call SetColor() |
-        \ call SetCursorStyle()
+        \ call SetCursorStyle() |
+        \ set background=light
+
 "autocmd FileType python colorscheme molokai
 
 " ================ LaTeX ============================
