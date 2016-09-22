@@ -8,6 +8,14 @@ if filereadable(expand("~/.vimrc.before"))
   source ~/.vimrc.before
 endif
 
+" Restore cursor position to where it was before
+autocmd BufReadPost *
+\ if line("'\"") > 0 && line("'\"") <= line("$") |
+\   exe "normal! g`\"" |
+\ endif
+"enable mouse control
+"set mouse=a
+    
 " ================ Search Settings  =================
 
 set incsearch        "Find the next match as we type the search
@@ -81,7 +89,7 @@ autocmd FileType make setlocal noexpandtab
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor='latex'
 
-set clipboard^=unnamed
+set clipboard=unnamedplus
 
 
 " =============== Pathogen Initialization ===========
@@ -151,14 +159,7 @@ function SetCursorStyle()
     set cursorline
     hi CursorLine   cterm=NONE ctermbg=234
     hi CursorLineNR ctermfg=172
-
-    " Restore cursor position to where it was before
-    autocmd BufReadPost *
-         \ if line("'\"") > 0 && line("'\"") <= line("$") |
-         \   exe "normal! g`\"" |
-         \ endif
-    "enable mouse control
-    "set mouse=a
+    
 endfunction
 
 " ================ Colorscheme ======================
@@ -168,16 +169,18 @@ call SetColor()
 call SetCursorStyle()
 
 autocmd FileType tex
-        \ colorscheme molokai |
+        \ colorscheme PaperColor |
         \ call SetColor() |
-        \ call SetCursorStyle()
+        \ call SetCursorStyle() |
+        \ set background=light
+
 "autocmd FileType python colorscheme molokai
 
 " ================ LaTeX ============================
 " faster scrolling in tex file
 autocmd FileType tex :NoMatchParen
 " set auto new line
-autocmd FileType tex :set tw=78
+autocmd FileType tex :set tw=80
 
 " ================ Plugins  =========================
 
@@ -266,4 +269,4 @@ let g:indentLine_enabled = 1
 let g:indentLine_color_term = 239
 let g:indentLine_fileTypeExclude = ['tex']
 
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
+"autocmd FileType java setlocal omnifunc=javacomplete#Complete
