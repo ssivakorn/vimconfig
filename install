@@ -27,8 +27,8 @@ curl -LSso "${COLOR_PATH}/luna-term.vim" https://raw.githubusercontent.com/notpr
 curl -LSso "${COLOR_PATH}/molokai.vim" https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim
 curl -LSso "${COLOR_PATH}/256-jungle.vim" https://raw.githubusercontent.com/vim-scripts/256-jungle/master/colors/256-jungle.vim
 curl -LSso "${COLOR_PATH}/harlequin.vim" https://raw.githubusercontent.com/nielsmadan/harlequin/master/colors/harlequin.vim
-rm -rf "${BUNDLE_PATH}/papercolor-theme"
-git clone https://github.com/nlknguyen/papercolor-theme "papercolor-theme"
+curl -LSso "${COLOR_PATH}/PaperColor.vim" https://raw.githubusercontent.com/NLKNguyen/papercolor-theme/master/colors/PaperColor.vim
+
 
 echo "[>] Installing PLUGINS ..."
 echo "[+] vim-pathogen"
@@ -57,10 +57,6 @@ nerdtree="${BUNDLE_PATH}/nerdtree"
 rm -rf ${nerdtree}
 git clone https://github.com/scrooloose/nerdtree.git ${nerdtree}
 
-#echo "[+] vim-taglist"
-#mkdir -p ${PLUGIN_PATH}
-#curl -LSso "${PLUGIN_PATH}/taglist.vim" https://raw.githubusercontent.com/vim-scripts/taglist.vim/master/plugin/taglist.vim
-
 echo "[+] vim-tagbar"
 tagbar="${BUNDLE_PATH}/tagbar"
 rm -rf ${tagbar}
@@ -84,9 +80,8 @@ delimitMate="${BUNDLE_PATH}/delimitMate"
 rm -rf ${delimitMate}
 git clone https://github.com/Raimondi/delimitMate.git ${delimitMate}
 
-echo "[+] vim-javacomplete2"
-javacomplete2="${BUNDLE_PATH}/vim-javacomplete2"
-rm -rf ${javacomplete2}
-git clone https://github.com/artur-shaik/vim-javacomplete2.git ${javacomplete2}
-
+#echo "[+] vim-javacomplete2"
+#javacomplete2="${BUNDLE_PATH}/vim-javacomplete2"
+#rm -rf ${javacomplete2}
+#git clone https://github.com/artur-shaik/vim-javacomplete2.git ${javacomplete2}
 

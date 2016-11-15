@@ -15,12 +15,12 @@ autocmd BufReadPost *
 \ endif
 "enable mouse control
 "set mouse=a
-    
+"
 " ================ Search Settings  =================
 
 set incsearch        "Find the next match as we type the search
 set nohlsearch         "Hilight searches by default
-set viminfo='100,f1  "Save up to 100 marks, enable capital marks
+"set viminfo='100,f1  "Save up to 100 marks, enable capital marks
 
 " ================ Turn Off Swap Files ==============
 
@@ -54,45 +54,26 @@ filetype plugin indent on
 set list listchars=tab:\ \ ,trail:·
 set linebreak    "Wrap lines at convenient points
 
-" ================ Folds ============================
-
+"" ================ Folds ============================
 set foldmethod=indent   "fold based on indent
-set foldnestmax=3       "deepest fold is 3 levels
+"set foldnestmax=3       "deepest fold is 3 levels
 set nofoldenable        "dont fold by default
 
-" ================ Completion =======================
 
-set wildmode=list:longest
-set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
-set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
-set wildignore+=*vim/backups*
-set wildignore+=*sass-cache*
-set wildignore+=*DS_Store*
-set wildignore+=vendor/rails/**
-set wildignore+=vendor/cache/**
-set wildignore+=*.gem
-set wildignore+=log/**
-set wildignore+=tmp/**
-set wildignore+=*.png,*.jpg,*.gif
-
-"
-
-" ================ Scrolling ========================
-
-set scrolloff=8         "Start scrolling when we're 8 lines away from margins
-set sidescrolloff=15
-set sidescroll=1
-set cul!
+"" ================ Scrolling ========================
+"set scrolloff=8         "Start scrolling when we're 8 lines away from margins
+"set sidescrolloff=15
+"set sidescroll=1
+"set cul!
 
 "Setting makefiles with tabs, not spaces
 autocmd FileType make setlocal noexpandtab
 
 set grepprg=grep\ -nH\ $*
-let g:tex_flavor='latex'
 
 set clipboard=unnamedplus
-
-
+"
+"
 " =============== Pathogen Initialization ===========
 " This loads all the plugins in ~/.vim/plugins
 " Use tpope's pathogen plugin to manage all other plugins
@@ -100,33 +81,37 @@ set clipboard=unnamedplus
 "runtime plugins/tpope-vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
 call pathogen#helptags()
-" call pathogen#runtime_append_all_bundles()
+"call pathogen#runtime_append_all_bundles()
 
 " ================ General Config ===================
 
 set number                      "Line numbers are good
-set backspace=indent,eol,start  "Allow backspace in insert mode
 set history=100                 "Store lots of :cmdline history
 set showcmd                     "Show incomplete cmds down the bottom
 set showmode                    "Show current mode down the bottom
-set gcr=a:blinkon0              "Disable cursor blink
-set visualbell                  "No sounds
+set showmatch                   "Do matching brackets
+set ignorecase                  "Do case insensitive matching
+set smartcase                   "Do smart case matching
 set autoread                    "Reload files changed outside vim
 set wrap                        "Soft Wrapping text (fit within window size)
+"set lazyredraw                  "Buffer screen update
 set colorcolumn=80
 set cinoptions=t0
-" This makes vim act like all other editors, buffers can
-" exist in the background without being in a window.
-" http://items.sjbach.com/319/configuring-vim-right
+"" This makes vim act like all other editors, buffers can
+"" exist in the background without being in a window.
+"" http://items.sjbach.com/319/configuring-vim-right
 set hidden
+
+" Disable bell
+autocmd VimEnter * set vb t_vb=
+
+"" ================ Fancy Color =====================
 
 " enable full color supported
 if $COLORTERM == 'gnome-terminal'
       set t_Co=256
 endif
 
-" ================ Fancy Colorscheme ================
-"set background=dark
 
 "turn on syntax highlighting
 syntax on
@@ -134,69 +119,30 @@ syntax on
 "enable python syntax highlight
 let python_highlight_all = 1
 
-"hilight systax from start of file
-autocmd BufEnter * :syntax sync fromstart
-
-"color themes
-function SetColor()
-    highlight Comment cterm=bold
-    highlight Normal ctermbg=None ctermfg=white
-    highlight LineNr ctermbg=None
-
-    "highlight line number
-    highlight LineNr ctermfg=DarkGray
-
-    "selected code color (visual)
-    hi Visual ctermbg=White ctermfg=Black
-
-    "highlight column color
-    highlight ColorColumn ctermbg=DarkRed
-endfunction
-
-" ================ Cursor ===========================
-" highlight current line
-function SetCursorStyle()
-    hi clear CursorLine
-    set cursorline
-    hi CursorLine   cterm=NONE ctermbg=234
-    hi CursorLineNR ctermfg=172
-    
-endfunction
-
-" ================ Colorscheme ======================
-
 colorscheme luna-term
-call SetColor()
-call SetCursorStyle()
-
 autocmd FileType tex
-        \ colorscheme PaperColor |
-        \ call SetColor() |
-        \ call SetCursorStyle() |
-        \ set background=light
+    \ colorscheme PaperColor |
+    \ set background=light
 
 "autocmd FileType python colorscheme molokai
 
-" ================ LaTeX ============================
-" faster scrolling in tex file
-autocmd FileType tex :NoMatchParen
-" set auto new line
-autocmd FileType tex :set tw=80
+" colorize
+"highlight Comment cterm=bold
+highlight Normal ctermbg=None ctermfg=white
 
-" ================ Plugins  =========================
+"highlight line number
+highlight LineNr ctermbg=None
+highlight LineNr ctermfg=DarkGrey
 
-" ================ IndentLine
-let g:indentLine_enabled = 1
-let g:indentLine_color_term = 239
-"let g:indentLine_char = '|'
+"selected code color (visual)
+hi Visual ctermbg=White ctermfg=Black
+
+"highlight column color
+highlight ColorColumn ctermbg=DarkRed
+
+"" ================ Plugins  =========================
 
 " ================ Airline
-"let g:airline_powerline_fonts=1
-"let g:airline#extensions#tabline#enabled = 1
-"let g:airline#extensions#tabline#left_sep = ''
-"let g:airline#extensions#tabline#right_sep = ''
-"let g:airline#extensions#tabline#left_alt_sep = '|'
-
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_exclude_preview=1
@@ -204,70 +150,55 @@ set laststatus=2
 "let g:airline_theme = 'powerlineish'
 
 " ================ Nerdtree
-" open vi nerdtree when vi starts up
-" autocmd vimenter * NERDTree
-" toggle Ctrl + l to open and close Nerdtree
+"open vi nerdtree when vi starts up
+"autocmd vimenter * NERDTree
+"toggle Ctrl + l to open and close Nerdtree
 map <C-l> :NERDTreeToggle<CR>
-" close vi if the only window left open is a NERDTree
+"close vi if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " ================ Syntastic
 " syntax checker: https://github.com/scrooloose/syntastic/wiki/Syntax-Checkers
+
 let g:syntastic_mode_map = { 'mode': 'active',
-                           \ 'active_filetypes': ['python', 'html', 'javascript'],
+                           \ 'active_filetypes': ['python', 'html', 'javascript', 'c'],
                            \ 'passive_filetypes': ['java'] }
 highlight SyntasticWarning NONE
 highlight SyntasticError NONE
 let g:syntastic_echo_current_error = 1
 let g:syntastic_error_symbol='xx'
 let g:syntastic_warning_symbol='!!'
-let g:syntastic_style_error_symbol='>>'
-let g:syntastic_style_warning_symbol='>>'
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+"let g:syntastic_style_error_symbol='>>'
+"let g:syntastic_style_warning_symbol='>>'
+""let g:syntastic_always_populate_loc_list = 1
+""let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_wq = 1
 
 let g:syntastic_python_checkers = ['pylint']
-let g:syntastic_python_pylint_args = '-d C0111 -d C0326 -d C0103'
-" Disable some verbosy syntax checkers
-let g:syntastic_python_python_use_codec = 1
-let g:syntastic_c_compiler = 'clang'
 let g:syntastic_html_checkers = ['w3']
+let g:syntastic_c_compiler = 'gcc'
 
+" Disable some verbosy syntax checkers
+let g:syntastic_python_pylint_args = '-d C0111 -d C0326 -d C0103'
+let g:syntastic_python_python_use_codec = 1
 
-" ================ Taglist
-"map <C-t> :TlistToggle<CR>
-""let Tlist_Display_Prototype=1
-"let Tlist_Exit_OnlyWindow = 1
-"let Tlist_Auto_Highlight_Tag = 1
-"let Tlist_GainFocus_On_ToggleOpen = 1
-"let Tlist_Enable_Fold_Column = 1
-"let Tlist_Inc_Winwidth = 0
-"let Tlist_Compact_Format = 1
-"let Tlist_Close_On_Select = 1
-"let Tlist_Use_Right_Window = 1
-
-"autocmd BufWritePost *.cpp :TlistUpdate
-"autocmd BufWritePost *.c :TlistUpdate
 
 " ================ Tagbar
-nmap <C-t> :TagbarToggle<CR>
+nmap <C-f> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
-let g:tagbar_autopreview = 1
 let g:tagbar_autoclose = 1
+"let g:tagbar_autopreview = 1
 
-" ================ Supertab
-let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
-
-" ================ DelimitMate
+"" ================ Supertab
+""let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+""let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+"
+"" ================ DelimitMate
 let delimitMate_expand_cr = 1
 let delimitMate_jump_expansion = 1
 
 " ================ IndentLine
 let g:indentLine_enabled = 1
 let g:indentLine_color_term = 239
-let g:indentLine_fileTypeExclude = ['tex']
+let g:indentLine_fileTypeExclude = ['tex', 'html']
 
-"autocmd FileType java setlocal omnifunc=javacomplete#Complete
