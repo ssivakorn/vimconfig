@@ -86,6 +86,7 @@ call pathogen#helptags()
 " ================ General Config ===================
 
 set number                      "Line numbers are good
+set backspace=indent,eol,start  "Allow backspace in insert mode
 set history=100                 "Store lots of :cmdline history
 set showcmd                     "Show incomplete cmds down the bottom
 set showmode                    "Show current mode down the bottom
@@ -193,9 +194,9 @@ let g:tagbar_autoclose = 1
 ""let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 ""let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 "
-"" ================ DelimitMate
-let delimitMate_expand_cr = 1
-let delimitMate_jump_expansion = 1
+" ================ DelimitMate
+let g:delimitMate_expand_cr = 1
+let g:delimitMate_jump_expansion = 1
 
 " ================ IndentLine
 let g:indentLine_enabled = 1
