@@ -202,4 +202,5 @@ let g:delimitMate_jump_expansion = 1
 let g:indentLine_enabled = 1
 let g:indentLine_color_term = 239
 let g:indentLine_fileTypeExclude = ['tex', 'html']
+let g:indentLine_setConceal = 0
 
