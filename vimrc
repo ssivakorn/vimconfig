@@ -9,10 +9,12 @@ if filereadable(expand("~/.vimrc.before"))
 endif
 
 " Restore cursor position to where it was before
-autocmd BufReadPost *
-\ if line("'\"") > 0 && line("'\"") <= line("$") |
-\   exe "normal! g`\"" |
-\ endif
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal! g'\"" | endif
+endif
+
+
 "enable mouse control
 "set mouse=a
 "
@@ -95,7 +97,7 @@ set ignorecase                  "Do case insensitive matching
 set smartcase                   "Do smart case matching
 set autoread                    "Reload files changed outside vim
 set wrap                        "Soft Wrapping text (fit within window size)
-"set lazyredraw                  "Buffer screen update
+set lazyredraw                  "Buffer screen update
 set colorcolumn=80
 set cinoptions=t0
 "" This makes vim act like all other editors, buffers can
@@ -105,6 +107,9 @@ set hidden
 
 " Disable bell
 autocmd VimEnter * set vb t_vb=
+
+" Latex favor
+let g:tex_flavor = "latex"
 
 "" ================ Fancy Color =====================
 
@@ -121,15 +126,18 @@ syntax on
 let python_highlight_all = 1
 
 colorscheme luna-term
-autocmd FileType tex
+
+autocmd FileType tex,latex
     \ colorscheme PaperColor |
-    \ set background=light
+    \ set background=light |
+    \ highlight ColorColumn ctermbg=DarkRed |
+    \ let g:airline_theme = 'light'
 
 "autocmd FileType python colorscheme molokai
 
 " colorize
 "highlight Comment cterm=bold
-highlight Normal ctermbg=None ctermfg=white
+"highlight Normal ctermbg=None ctermfg=white
 
 "highlight line number
 highlight LineNr ctermbg=None
@@ -147,8 +155,10 @@ highlight ColorColumn ctermbg=DarkRed
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_exclude_preview=1
+" airline theme: https://github.com/vim-airline/vim-airline/wiki/Screenshots
+let g:airline_theme = 'powerlineish'
+
 set laststatus=2
-"let g:airline_theme = 'powerlineish'
 
 " ================ Nerdtree
 "open vi nerdtree when vi starts up
