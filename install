@@ -80,6 +80,7 @@ delimitMate="${BUNDLE_PATH}/delimitMate"
 rm -rf ${delimitMate}
 git clone https://github.com/Raimondi/delimitMate.git ${delimitMate}
 
+
 #echo "[+] vim-javacomplete2"
 #javacomplete2="${BUNDLE_PATH}/vim-javacomplete2"
 #rm -rf ${javacomplete2}

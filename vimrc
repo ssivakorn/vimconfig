@@ -2,81 +2,7 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
-" TODO: this may not be in the correct place. It is intended to allow overriding <Leader>.
-" source ~/.vimrc.before if it exists.
-if filereadable(expand("~/.vimrc.before"))
-  source ~/.vimrc.before
-endif
-
-" Restore cursor position to where it was before
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
-    \| exe "normal! g'\"" | endif
-endif
-
-
-"enable mouse control
-"set mouse=a
-"
-" ================ Search Settings  =================
-
-set incsearch        "Find the next match as we type the search
-set nohlsearch         "Hilight searches by default
-"set viminfo='100,f1  "Save up to 100 marks, enable capital marks
-
-" ================ Turn Off Swap Files ==============
-
-set noswapfile
-set nobackup
-set nowb
-
-" ================ Persistent Undo ==================
-" Keep undo history across sessions, by storing in file.
-" Only works all the time.
-
-silent !mkdir ~/.vim/backups > /dev/null 2>&1
-set undodir=~/.vim/backups
-set undofile
-
-" ================ Indentation ======================
-
-set autoindent
-set smartindent
-set smarttab
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
-set expandtab
-set ts=4
-set cindent
-
-filetype plugin indent on
-
-" Display tabs and trailing spaces visually
-set list listchars=tab:\ \ ,trail:·
-set linebreak    "Wrap lines at convenient points
-
-"" ================ Folds ============================
-set foldmethod=indent   "fold based on indent
-"set foldnestmax=3       "deepest fold is 3 levels
-set nofoldenable        "dont fold by default
-
-
-"" ================ Scrolling ========================
-"set scrolloff=8         "Start scrolling when we're 8 lines away from margins
-"set sidescrolloff=15
-"set sidescroll=1
-"set cul!
-
-"Setting makefiles with tabs, not spaces
-autocmd FileType make setlocal noexpandtab
-
-set grepprg=grep\ -nH\ $*
-
-set clipboard=unnamedplus
-"
-"
-" =============== Pathogen Initialization ===========
+" ================= PATHOGEN =========================
 " This loads all the plugins in ~/.vim/plugins
 " Use tpope's pathogen plugin to manage all other plugins
 
@@ -85,8 +11,7 @@ call pathogen#infect()
 call pathogen#helptags()
 "call pathogen#runtime_append_all_bundles()
 
-" ================ General Config ===================
-
+" ================= GENERAL ===========================
 set number                      "Line numbers are good
 set backspace=indent,eol,start  "Allow backspace in insert mode
 set history=100                 "Store lots of :cmdline history
@@ -111,13 +36,86 @@ autocmd VimEnter * set vb t_vb=
 " Latex favor
 let g:tex_flavor = "latex"
 
-"" ================ Fancy Color =====================
+" ================ CURSOR =============================
+" Restore cursor position to where it was before
+au BufWinLeave * mkview
+au BufWinEnter * silent loadview
+"autocmd BufReadPost *
+"     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+"     \   exe "normal! g`\"" |
+"     \ endif
 
+"enable mouse control
+"set mouse=a
+
+" ================= SEARCH ===========================
+set incsearch           "Find the next match as we type the search
+set nohlsearch          "Hilight searches by default
+"set viminfo='100,f1    "Save up to 100 marks, enable capital marks
+
+
+" ================= TURN OFF SWAP FILES ==============
+set noswapfile
+set nobackup
+set nowb
+
+" ================= PERSISTENT UNDO ==================
+" Keep undo history across sessions, by storing in file.
+" Only works all the time.
+
+silent !mkdir ~/.vim/backups > /dev/null 2>&1
+set undodir=~/.vim/backups
+set undofile
+
+" ================= INDENTATION ======================
+set autoindent
+set smartindent
+set smarttab
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
+set expandtab
+set ts=4
+set cindent
+
+filetype plugin indent on
+
+" Display tabs and trailing spaces visually
+set list listchars=tab:\ \ ,trail:·
+set linebreak    "Wrap lines at convenient points
+
+" ================= FOLDS ============================
+set foldmethod=indent   "fold based on indent
+"set foldnestmax=3       "deepest fold is 3 levels
+set nofoldenable        "dont fold by default
+
+
+" ================= SCROLLING ========================
+"set scrolloff=8         "Start scrolling when we're 8 lines away from margins
+"set sidescrolloff=15
+"set sidescroll=1
+"set cul!
+
+"Setting makefiles with tabs, not spaces
+autocmd FileType make setlocal noexpandtab
+
+set grepprg=grep\ -nH\ $*
+
+" ================= COPY PASTE =======================
+"Copy to X11 clipboard
+map <Leader>y "+2yy
+"Cut to X11 clipboard
+map <Leader>d "+dd
+"Paste X11 clipboard
+map <Leader>p "+p
+
+"set clipboard=unnamedplus
+
+" ================ FANCY COLOR =======================
 " enable full color supported
 if $COLORTERM == 'gnome-terminal'
       set t_Co=256
 endif
-
 
 "turn on syntax highlighting
 syntax on
@@ -149,9 +147,8 @@ hi Visual ctermbg=White ctermfg=Black
 "highlight column color
 highlight ColorColumn ctermbg=DarkRed
 
-"" ================ Plugins  =========================
-
-" ================ Airline
+" ================= PLUGINS ==========================
+" ================= AIRLINE
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_exclude_preview=1
@@ -160,7 +157,7 @@ let g:airline_theme = 'powerlineish'
 
 set laststatus=2
 
-" ================ Nerdtree
+" ================= NERDTREE
 "open vi nerdtree when vi starts up
 "autocmd vimenter * NERDTree
 "toggle Ctrl + l to open and close Nerdtree
@@ -168,12 +165,12 @@ map <C-l> :NERDTreeToggle<CR>
 "close vi if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" ================ Syntastic
-" syntax checker: https://github.com/scrooloose/syntastic/wiki/Syntax-Checkers
+" ================= SYNTASTIC
+let g:syntastic_mode_map = {
+        \ 'mode': 'active',
+        \ 'active_filetypes':   ['python', 'html', 'javascript', 'c'],
+        \ 'passive_filetypes':  ['java'] }
 
-let g:syntastic_mode_map = { 'mode': 'active',
-                           \ 'active_filetypes': ['python', 'html', 'javascript', 'c'],
-                           \ 'passive_filetypes': ['java'] }
 highlight SyntasticWarning NONE
 highlight SyntasticError NONE
 let g:syntastic_echo_current_error = 1
@@ -194,21 +191,21 @@ let g:syntastic_python_pylint_args = '-d C0111 -d C0326 -d C0103'
 let g:syntastic_python_python_use_codec = 1
 
 
-" ================ Tagbar
+" ================= TAGBAR
 nmap <C-f> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
 let g:tagbar_autoclose = 1
 "let g:tagbar_autopreview = 1
 
-"" ================ Supertab
+" ================= SUPERTAB
 ""let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 ""let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 "
-" ================ DelimitMate
+" ================= DELIMITMATE
 let g:delimitMate_expand_cr = 1
 let g:delimitMate_jump_expansion = 1
 
-" ================ IndentLine
+" ================= INDENTLINE
 let g:indentLine_enabled = 1
 let g:indentLine_color_term = 239
 let g:indentLine_fileTypeExclude = ['tex', 'html']
