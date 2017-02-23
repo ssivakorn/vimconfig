@@ -123,7 +123,7 @@ syntax on
 "enable python syntax highlight
 let python_highlight_all = 1
 
-colorscheme luna-term
+colorscheme molokai
 
 autocmd FileType tex,latex
     \ colorscheme PaperColor |
@@ -131,7 +131,10 @@ autocmd FileType tex,latex
     \ highlight ColorColumn ctermbg=DarkRed |
     \ let g:airline_theme = 'light'
 
-"autocmd FileType python colorscheme molokai
+autocmd FileType python
+    \ colorscheme luna-term |
+    \ highlight ColorColumn ctermbg=DarkRed |
+    \ let g:airline_theme = 'dark'
 
 " colorize
 "highlight Comment cterm=bold
@@ -153,7 +156,7 @@ let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_exclude_preview=1
 " airline theme: https://github.com/vim-airline/vim-airline/wiki/Screenshots
-let g:airline_theme = 'powerlineish'
+let g:airline_theme = 'dark'
 
 set laststatus=2
 
