@@ -109,7 +109,7 @@ map <Leader>d "+dd
 "Paste X11 clipboard
 map <Leader>p "+p
 
-"set clipboard=unnamedplus
+set clipboard=unnamedplus
 
 " ================ FANCY COLOR =======================
 " enable full color supported
