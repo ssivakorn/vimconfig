@@ -103,7 +103,7 @@ set grepprg=grep\ -nH\ $*
 
 " ================= COPY PASTE =======================
 "Copy to X11 clipboard
-map <Leader>y "+2yy
+map <Leader>y "+yy
 "Cut to X11 clipboard
 map <Leader>d "+dd
 "Paste X11 clipboard
