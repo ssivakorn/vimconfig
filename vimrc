@@ -38,8 +38,8 @@ let g:tex_flavor = "latex"
 
 " ================ CURSOR =============================
 " Restore cursor position to where it was before
-au BufWinLeave * mkview
-au BufWinEnter * silent loadview
+au BufWinLeave ?* mkview 1
+au BufWinEnter ?* silent loadview 1
 "autocmd BufReadPost *
 "     \ if line("'\"") > 0 && line("'\"") <= line("$") |
 "     \   exe "normal! g`\"" |
@@ -126,8 +126,8 @@ let python_highlight_all = 1
 colorscheme molokai
 
 autocmd FileType tex,latex
-    \ colorscheme PaperColor |
     \ set background=light |
+    \ colorscheme pablo |
     \ highlight ColorColumn ctermbg=DarkRed |
     \ let g:airline_theme = 'light'
 
