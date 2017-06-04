@@ -179,13 +179,14 @@ highlight SyntasticError NONE
 let g:syntastic_echo_current_error = 1
 let g:syntastic_error_symbol='xx'
 let g:syntastic_warning_symbol='!!'
-"let g:syntastic_style_error_symbol='>>'
-"let g:syntastic_style_warning_symbol='>>'
+""let g:syntastic_style_error_symbol='>>'
+""let g:syntastic_style_warning_symbol='>>'
 ""let g:syntastic_always_populate_loc_list = 1
 ""let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_wq = 1
 
-let g:syntastic_python_checkers = ['pylint']
+"let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_python_checkers = ['']
 let g:syntastic_html_checkers = ['w3']
 let g:syntastic_c_compiler = 'gcc'
 
@@ -214,3 +215,6 @@ let g:indentLine_color_term = 239
 let g:indentLine_fileTypeExclude = ['tex', 'html']
 let g:indentLine_setConceal = 0
 
+" ================= YOUCOMPLETEME
+"set completeopt-=preview "No scratch preview pane
+let g:ycm_add_preview_to_completeopt = 0

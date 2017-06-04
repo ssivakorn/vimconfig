@@ -81,6 +81,16 @@ rm -rf ${delimitMate}
 git clone https://github.com/Raimondi/delimitMate.git ${delimitMate}
 
 
+echo "[+] YouCompleteMe"
+ycpm="${BUNDLE_PATH}/YouCompleteMe"
+rm -rf ${ycpm}
+git clone https://github.com/Valloric/YouCompleteMe.git ${ycpm}
+
+cd ${ycpm}
+git submodule update --init --recursive ${ycpm}
+./install.py --all
+cd -
+
 #echo "[+] vim-javacomplete2"
 #javacomplete2="${BUNDLE_PATH}/vim-javacomplete2"
 #rm -rf ${javacomplete2}
