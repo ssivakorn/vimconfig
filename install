@@ -1,98 +1,12 @@
 #!/bin/bash
 
-COLOR="colors"
-SYNTAX="syntax"
-PLUGIN="plugin"
-BUNDLE="bundle"
-AUTOLOAD="autoload"
+echo "[+] INSTALL VIM ..."
+cp vimrc $HOME/.vimrc
+cp vimrc-plugins $HOME/.vimrc-plugins
 
-VIM_PATH="$HOME/.vim"
-COLOR_PATH="${VIM_PATH}/${COLOR}"
-SYNTAX_PATH="${VIM_PATH}/${SYNTAX}"
-PLUGIN_PATH="${VIM_PATH}/${PLUGIN}"
-BUNDLE_PATH="${VIM_PATH}/${BUNDLE}"
-AUTOLOAD_PATH="${VIM_PATH}/${AUTOLOAD}"
+curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-echo "[>] Installing VIM CONFIG ..."
-cp vimrc ~/.vimrc
-
-echo "[>] Installing SYNTAX ..."
-mkdir -p "${VIM_PATH}"
-#cp -rf ${SYNTAX}  "${VIM_PATH}/."
-
-
-echo "[>] Installing COLORSCHEMES ..."
-mkdir -p "${COLOR_PATH}"
-curl -LSso "${COLOR_PATH}/luna-term.vim" https://raw.githubusercontent.com/notpratheek/vim-luna/master/colors/luna-term.vim
-curl -LSso "${COLOR_PATH}/molokai.vim" https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim
-curl -LSso "${COLOR_PATH}/256-jungle.vim" https://raw.githubusercontent.com/vim-scripts/256-jungle/master/colors/256-jungle.vim
-curl -LSso "${COLOR_PATH}/harlequin.vim" https://raw.githubusercontent.com/nielsmadan/harlequin/master/colors/harlequin.vim
-curl -LSso "${COLOR_PATH}/PaperColor.vim" https://raw.githubusercontent.com/NLKNguyen/papercolor-theme/master/colors/PaperColor.vim
-
-
-echo "[>] Installing PLUGINS ..."
-echo "[+] vim-pathogen"
-mkdir -p ${AUTOLOAD_PATH}
-mkdir -p ${BUNDLE_PATH}
-curl -LSso "${AUTOLOAD_PATH}/pathogen.vim" https://tpo.pe/pathogen.vim
-
-echo "[+] vim-airline"
-airline="${BUNDLE_PATH}/vim-airline"
-rm -rf ${airline}
-git clone https://github.com/vim-airline/vim-airline.git ${airline}
-
-echo "[+] vim-airline themes"
-airline_themes="${BUNDLE_PATH}/vim-airline-themes"
-rm -rf ${airline_themes}
-git clone https://github.com/vim-airline/vim-airline-themes.git ${airline_themes}
-
-
-echo "[+] vim-syntastic"
-syntastic="${BUNDLE_PATH}/syntastic"
-rm -rf ${syntastic}
-git clone https://github.com/scrooloose/syntastic.git ${syntastic}
-
-echo "[+] vim-nerdtree"
-nerdtree="${BUNDLE_PATH}/nerdtree"
-rm -rf ${nerdtree}
-git clone https://github.com/scrooloose/nerdtree.git ${nerdtree}
-
-echo "[+] vim-tagbar"
-tagbar="${BUNDLE_PATH}/tagbar"
-rm -rf ${tagbar}
-git clone https://github.com/majutsushi/tagbar.git ${tagbar}
-
-
-echo "[+] vim-indentLine"
-indentLine="${BUNDLE_PATH}/indentLine"
-rm -rf ${indentLine}
-git clone https://github.com/Yggdroot/indentLine.git ${indentLine}
-
-
-echo "[+] vim-supertab"
-supertab="${BUNDLE_PATH}/supertab"
-rm -rf ${supertab}
-git clone https://github.com/ervandew/supertab.git ${supertab}
-
-
-echo "[+] vim-delimitMate"
-delimitMate="${BUNDLE_PATH}/delimitMate"
-rm -rf ${delimitMate}
-git clone https://github.com/Raimondi/delimitMate.git ${delimitMate}
-
-
-echo "[+] YouCompleteMe"
-ycpm="${BUNDLE_PATH}/YouCompleteMe"
-rm -rf ${ycpm}
-git clone https://github.com/Valloric/YouCompleteMe.git ${ycpm}
-
-cd ${ycpm}
-git submodule update --init --recursive ${ycpm}
-./install.py --all
-cd -
-
-#echo "[+] vim-javacomplete2"
-#javacomplete2="${BUNDLE_PATH}/vim-javacomplete2"
-#rm -rf ${javacomplete2}
-#git clone https://github.com/artur-shaik/vim-javacomplete2.git ${javacomplete2}
+echo "[+] INSTALL COLORSCHEMES ..."
+cat themes | xargs -L 1 ./theme.sh
 

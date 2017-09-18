@@ -1,0 +1,72 @@
+" ================== VIM PLUGINS CONFIGURATION ===============================
+" Use vim-plug as vim plugin manager
+call plug#begin('~/.vim/plugged')
+
+" vim-airline: status line
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" vim-supertab: autocomplete with tab
+Plug 'ervandew/supertab'
+
+" vim-syntastic: syntax checker
+Plug 'scrooloose/syntastic'
+
+" vim-delimitMate: smart closing quotes, parenthesis, brackets, etc.
+Plug 'Raimondi/delimitMate'
+
+" vim-indentline: draw indent line
+Plug 'Yggdroot/indentLine'
+
+" vim-ycm: youcompleteme
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+
+call plug#end()
+
+" ================= AIRLINE
+let g:airline_theme = 'powerlineish'
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+let g:airline_exclude_preview=1
+
+" ================= SYNTASTIC
+let g:syntastic_mode_map = {
+        \ 'mode': 'active',
+        \ 'active_filetypes':   ['python', 'html', 'javascript', 'c'],
+        \ 'passive_filetypes':  ['java'] }
+
+highlight SyntasticWarning NONE
+highlight SyntasticError NONE
+
+let g:syntastic_echo_current_error = 1
+let g:syntastic_error_symbol='xx'
+let g:syntastic_warning_symbol='!!'
+let g:syntastic_check_on_wq = 1
+
+"let g:syntastic_style_error_symbol='>>'
+"let g:syntastic_style_warning_symbol='>>'
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+
+let g:syntastic_python_checkers = ['pyflakes']
+let g:syntastic_html_checkers = ['w3']
+let g:syntastic_c_compiler = 'gcc'
+
+" Disable some verbosy syntax checkers
+let g:syntastic_python_pylint_args = '-d C0111 -d C0326 -d C0103'
+let g:syntastic_python_python_use_codec = 1
+
+
+" ================= DELIMITMATE
+let g:delimitMate_expand_cr = 1
+let g:delimitMate_jump_expansion = 1
+
+" ================= INDENTLINE
+let g:indentLine_enabled = 1
+let g:indentLine_setConceal = 0
+let g:indentLine_char = '│'
+let g:indentLine_color_term = 239
+let g:indentLine_fileTypeExclude = ['tex', 'html']
+
+" ================= YOUCOMPLETEME
+let g:ycm_add_preview_to_completeopt = 0

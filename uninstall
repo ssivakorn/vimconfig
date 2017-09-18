@@ -1,7 +1,4 @@
 #!/bin/bash
-
-echo "[>] Uninstalling vimconfig"
 rm -rf ~/.vimrc
+rm -rf ~/.vimrc-plugins
 rm -rf ~/.vim
-
-

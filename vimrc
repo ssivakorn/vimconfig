@@ -1,16 +1,17 @@
+" ================== VIM CONFIGURATION =======================================
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
-" ================= PATHOGEN =========================
-" This loads all the plugins in ~/.vim/plugins
-" Use tpope's pathogen plugin to manage all other plugins
-
-"runtime plugins/tpope-vim-pathogen/autoload/pathogen.vim
-call pathogen#infect()
-call pathogen#helptags()
-"call pathogen#runtime_append_all_bundles()
-
+"" ================= PATHOGEN =========================
+"" This loads all the plugins in ~/.vim/plugins
+"" Use tpope's pathogen plugin to manage all other plugins
+"
+""runtime plugins/tpope-vim-pathogen/autoload/pathogen.vim
+"call pathogen#infect()
+"call pathogen#helptags()
+""call pathogen#runtime_append_all_bundles()
+"
 " ================= GENERAL ===========================
 set number                      "Line numbers are good
 set backspace=indent,eol,start  "Allow backspace in insert mode
@@ -18,11 +19,13 @@ set history=100                 "Store lots of :cmdline history
 set showcmd                     "Show incomplete cmds down the bottom
 set showmode                    "Show current mode down the bottom
 set showmatch                   "Do matching brackets
-set ignorecase                  "Do case insensitive matching
 set smartcase                   "Do smart case matching
 set autoread                    "Reload files changed outside vim
 set wrap                        "Soft Wrapping text (fit within window size)
 set lazyredraw                  "Buffer screen update
+set encoding=utf-8              "Standard encoding to UTF-8
+set ffs=unix,dos,mac            "Unix as the standard filetype
+set laststatus=2                "Set statusline = 2
 set colorcolumn=80
 set cinoptions=t0
 "" This makes vim act like all other editors, buffers can
@@ -30,7 +33,10 @@ set cinoptions=t0
 "" http://items.sjbach.com/319/configuring-vim-right
 set hidden
 
-" Disable bell
+" Disable bells
+set noerrorbells
+set novisualbell
+set tm=500
 autocmd VimEnter * set vb t_vb=
 
 " Latex favor
@@ -49,8 +55,10 @@ au BufWinEnter ?* silent loadview 1
 "set mouse=a
 
 " ================= SEARCH ===========================
+set ignorecase          "Ignore case when searching
 set incsearch           "Find the next match as we type the search
-set nohlsearch          "Hilight searches by default
+set hlsearch            "Hilight searches by default
+
 "set viminfo='100,f1    "Save up to 100 marks, enable capital marks
 
 
@@ -68,30 +76,32 @@ set undodir=~/.vim/backups
 set undofile
 
 " ================= INDENTATION ======================
-set autoindent
-set smartindent
+set autoindent          "Auto indent
+set smartindent         "Smart indent
+set expandtab           "Use spaces instead of tabs
 set smarttab
-set shiftwidth=4
+
+set shiftwidth=4        "1 tab == 4 spaces
 set softtabstop=4
 set tabstop=4
-set expandtab
 set ts=4
+
 set cindent
 
 filetype plugin indent on
 
 " Display tabs and trailing spaces visually
 set list listchars=tab:\ \ ,trail:·
-set linebreak    "Wrap lines at convenient points
+set linebreak           "Wrap lines at convenient points
 
 " ================= FOLDS ============================
-set foldmethod=indent   "fold based on indent
-"set foldnestmax=3       "deepest fold is 3 levels
-set nofoldenable        "dont fold by default
+set foldmethod=indent   "Fold based on indent
+set nofoldenable        "Dont fold by default
+"set foldnestmax=3       "Deepest fold is 3 levels
 
 
 " ================= SCROLLING ========================
-"set scrolloff=8         "Start scrolling when we're 8 lines away from margins
+"set scrolloff=8        "Start scrolling when we're 8 lines away from margins
 "set sidescrolloff=15
 "set sidescroll=1
 "set cul!
@@ -112,109 +122,43 @@ map <Leader>p "+p
 set clipboard+=unnamed
 
 " ================ FANCY COLOR =======================
-" enable full color supported
+" Enable full color supported
 if $COLORTERM == 'gnome-terminal'
       set t_Co=256
 endif
 
-"turn on syntax highlighting
+"Turn on syntax highlighting
 syntax on
 
-"enable python syntax highlight
+"Enable python syntax highlight
 let python_highlight_all = 1
 
+"Set background dark
+set background=dark
 colorscheme molokai
 
 autocmd FileType tex,latex
     \ set background=light |
-    \ colorscheme pablo |
-    \ highlight ColorColumn ctermbg=DarkRed |
-    \ let g:airline_theme = 'light'
+    \ colorscheme pablo
 
 autocmd FileType python
-    \ colorscheme luna-term |
-    \ highlight ColorColumn ctermbg=DarkRed |
-    \ let g:airline_theme = 'dark'
+    \ colorscheme luna-term
 
-" colorize
-"highlight Comment cterm=bold
-"highlight Normal ctermbg=None ctermfg=white
+hi Normal ctermbg=None ctermfg=white
 
-"highlight line number
-highlight LineNr ctermbg=None
-highlight LineNr ctermfg=DarkGrey
+"Highlight line number
+hi LineNr ctermbg=None
+hi LineNr ctermfg=DarkGrey
 
-"selected code color (visual)
+"Highlight selected code color (visual)
 hi Visual ctermbg=White ctermfg=Black
 
-"highlight column color
-highlight ColorColumn ctermbg=DarkRed
+"Highlight column color
+hi ColorColumn ctermbg=238
+
+"Highlight search
+hi Search cterm=NONE ctermfg=White ctermbg=196
+
 
 " ================= PLUGINS ==========================
-" ================= AIRLINE
-let g:airline_left_sep=''
-let g:airline_right_sep=''
-let g:airline_exclude_preview=1
-" airline theme: https://github.com/vim-airline/vim-airline/wiki/Screenshots
-let g:airline_theme = 'dark'
-
-set laststatus=2
-
-" ================= NERDTREE
-"open vi nerdtree when vi starts up
-"autocmd vimenter * NERDTree
-"toggle Ctrl + l to open and close Nerdtree
-map <C-l> :NERDTreeToggle<CR>
-"close vi if the only window left open is a NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" ================= SYNTASTIC
-let g:syntastic_mode_map = {
-        \ 'mode': 'active',
-        \ 'active_filetypes':   ['python', 'html', 'javascript', 'c'],
-        \ 'passive_filetypes':  ['java'] }
-
-highlight SyntasticWarning NONE
-highlight SyntasticError NONE
-let g:syntastic_echo_current_error = 1
-let g:syntastic_error_symbol='xx'
-let g:syntastic_warning_symbol='!!'
-""let g:syntastic_style_error_symbol='>>'
-""let g:syntastic_style_warning_symbol='>>'
-""let g:syntastic_always_populate_loc_list = 1
-""let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_wq = 1
-
-"let g:syntastic_python_checkers = ['pylint']
-let g:syntastic_python_checkers = ['']
-let g:syntastic_html_checkers = ['w3']
-let g:syntastic_c_compiler = 'gcc'
-
-" Disable some verbosy syntax checkers
-let g:syntastic_python_pylint_args = '-d C0111 -d C0326 -d C0103'
-let g:syntastic_python_python_use_codec = 1
-
-
-" ================= TAGBAR
-nmap <C-f> :TagbarToggle<CR>
-let g:tagbar_autofocus = 1
-let g:tagbar_autoclose = 1
-"let g:tagbar_autopreview = 1
-
-" ================= SUPERTAB
-""let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-""let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
-"
-" ================= DELIMITMATE
-let g:delimitMate_expand_cr = 1
-let g:delimitMate_jump_expansion = 1
-
-" ================= INDENTLINE
-let g:indentLine_enabled = 1
-let g:indentLine_color_term = 239
-let g:indentLine_fileTypeExclude = ['tex', 'html']
-let g:indentLine_setConceal = 0
-
-" ================= YOUCOMPLETEME
-"set completeopt-=preview "No scratch preview pane
-let g:ycm_add_preview_to_completeopt = 0
+source $HOME/.vimrc-plugins
