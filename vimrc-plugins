@@ -69,4 +69,5 @@ let g:indentLine_color_term = 239
 let g:indentLine_fileTypeExclude = ['tex', 'html']
 
 " ================= YOUCOMPLETEME
+set completeopt-=preview
 let g:ycm_add_preview_to_completeopt = 0

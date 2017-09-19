@@ -51,8 +51,15 @@ au BufWinEnter ?* silent loadview 1
 "     \   exe "normal! g`\"" |
 "     \ endif
 
-"enable mouse control
+"Enable mouse control
 "set mouse=a
+
+" Enable cursorline
+augroup CursorLine
+    au!
+    au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+    au WinLeave * setlocal nocursorline
+augroup END
 
 " ================= SEARCH ===========================
 set ignorecase          "Ignore case when searching
@@ -144,21 +151,23 @@ autocmd FileType tex,latex
 autocmd FileType python
     \ colorscheme luna-term
 
-hi Normal ctermbg=None ctermfg=white
+hi Normal ctermbg=NONE guibg=NONE ctermfg=255 guifg=#FFFFFF
 
 "Highlight line number
-hi LineNr ctermbg=None
-hi LineNr ctermfg=DarkGrey
+hi LineNr ctermbg=NONE guibg=NONE ctermfg=240 guifg=#585858
 
 "Highlight selected code color (visual)
-hi Visual ctermbg=White ctermfg=Black
+hi Visual ctermbg=255 guibg=#FFFFFF ctermfg=16 guifg=#000000
 
 "Highlight column color
-hi ColorColumn ctermbg=238
+hi ColorColumn ctermbg=236 guibg=#303030 ctermfg=255 guifg=#FFFFFF
 
 "Highlight search
-hi Search cterm=NONE ctermfg=White ctermbg=196
+hi Search ctermbg=220 guibg=#FFD700 ctermfg=16 guifg=#000000
 
+"Highlight cursorline
+hi CursorLine ctermbg=235 guibg=#262626
+hi CursorLineNR ctermfg=208 guifg=#ff8700 ctermbg=NONE guibg=NONE
 
 " ================= PLUGINS ==========================
 source $HOME/.vimrc-plugins
