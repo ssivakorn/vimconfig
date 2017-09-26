@@ -118,6 +118,15 @@ autocmd FileType make setlocal noexpandtab
 
 set grepprg=grep\ -nH\ $*
 
+" ================= KEY MAP ==========================
+if &term =~ '^screen'
+    "TMUX will send xterm-style keys when its xterm-keys option is on
+    execute "set <xUp>=\e[1;*A"
+    execute "set <xDown>=\e[1;*B"
+    execute "set <xRight>=\e[1;*C"
+    execute "set <xLeft>=\e[1;*D"
+endif
+
 " ================= COPY PASTE =======================
 "Copy to X11 clipboard
 map <Leader>y "+yy
@@ -167,7 +176,7 @@ hi Search ctermbg=220 guibg=#FFD700 ctermfg=16 guifg=#000000
 
 "Highlight cursorline
 hi CursorLine ctermbg=235 guibg=#262626
-hi CursorLineNR ctermfg=208 guifg=#ff8700 ctermbg=NONE guibg=NONE
+"hi CursorLineNR ctermfg=208 guifg=#ff8700 ctermbg=NONE guibg=NONE
 
 " ================= PLUGINS ==========================
 source $HOME/.vimrc-plugins

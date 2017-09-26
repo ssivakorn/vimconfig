@@ -20,6 +20,7 @@ Plug 'Yggdroot/indentLine'
 
 " vim-ycm: youcompleteme
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+Plug 'Valloric/YouCompleteMe'
 
 call plug#end()
 
