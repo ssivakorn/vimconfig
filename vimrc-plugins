@@ -22,6 +22,9 @@ Plug 'Yggdroot/indentLine'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 Plug 'Valloric/YouCompleteMe'
 
+" vimtex
+Plug 'lervag/vimtex'
+
 call plug#end()
 
 " ================= AIRLINE

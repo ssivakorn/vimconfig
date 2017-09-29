@@ -65,7 +65,8 @@ augroup END
 set ignorecase          "Ignore case when searching
 set incsearch           "Find the next match as we type the search
 set hlsearch            "Hilight searches by default
-
+nnoremap <esc><esc> :silent! nohlsearch<cr>
+                        "Disable hilight searches
 "set viminfo='100,f1    "Save up to 100 marks, enable capital marks
 
 
@@ -153,30 +154,40 @@ let python_highlight_all = 1
 set background=dark
 colorscheme molokai
 
+
 autocmd FileType tex,latex
     \ set background=light |
-    \ colorscheme pablo
+    \ colorscheme koehler |
+    \ set spell
 
 autocmd FileType python
     \ colorscheme luna-term
 
-hi Normal ctermbg=NONE guibg=NONE ctermfg=255 guifg=#FFFFFF
+function! SetColor()
 
-"Highlight line number
-hi LineNr ctermbg=NONE guibg=NONE ctermfg=240 guifg=#585858
+    "Highlight normal color
+    hi Normal ctermbg=NONE guibg=NONE ctermfg=255 guifg=#FFFFFF
 
-"Highlight selected code color (visual)
-hi Visual ctermbg=255 guibg=#FFFFFF ctermfg=16 guifg=#000000
+    "Highlight line number
+    hi LineNr ctermbg=NONE guibg=NONE ctermfg=240 guifg=#585858
 
-"Highlight column color
-hi ColorColumn ctermbg=236 guibg=#303030 ctermfg=255 guifg=#FFFFFF
+    "Highlight selected code color (visual)
+    hi Visual ctermbg=255 guibg=#FFFFFF ctermfg=16 guifg=#000000
 
-"Highlight search
-hi Search ctermbg=220 guibg=#FFD700 ctermfg=16 guifg=#000000
+    "Highlight column color
+    hi ColorColumn ctermbg=236 guibg=#303030 ctermfg=255 guifg=#FFFFFF
 
-"Highlight cursorline
-hi CursorLine ctermbg=235 guibg=#262626
-"hi CursorLineNR ctermfg=208 guifg=#ff8700 ctermbg=NONE guibg=NONE
+    "Highlight search
+    hi Search ctermbg=220 guibg=#FFD700 ctermfg=16 guifg=#000000
+
+    "Highlight cursorline
+    hi CursorLine ctermbg=235 guibg=#262626 cterm=none gui=none
+    hi CursorLineNR ctermfg=208 guifg=#ff8700 ctermbg=NONE guibg=NONE
+
+    endfunction
+
+autocmd FileType * call SetColor()
 
 " ================= PLUGINS ==========================
 source $HOME/.vimrc-plugins
+
