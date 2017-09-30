@@ -1,81 +1,95 @@
-" ================== VIM CONFIGURATION =======================================
-" Use Vim settings, rather then Vi settings (much better!).
+" ================== NEOVIM CONFIGURATION =======================================
 " This must be first, because it changes other options as a side effect.
-set nocompatible
+"set nocompatible
 
 " ================= VIMPLUG ==========================
 " Use vim-plug as vim plugin manager
 call plug#begin('~/.vim/plugged')
 
 " ================= PLUGINS
-" vim-airline: status line
-Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline'				"vim-airline: status line
 Plug 'vim-airline/vim-airline-themes'
 
-" vim-supertab: autocomplete with tab
-Plug 'ervandew/supertab'
+Plug 'scrooloose/syntastic'					"vim-syntastic: syntax checker
 
-" vim-syntastic: syntax checker
-Plug 'scrooloose/syntastic'
+Plug 'Raimondi/delimitMate'					"vim-delimitMate: smart closing quotes, etc.
+Plug 'Yggdroot/indentLine' 					"vim-indentline: draw indent line
 
-" vim-delimitMate: smart closing quotes, parenthesis, brackets, etc.
-Plug 'Raimondi/delimitMate'
+Plug 'ervandew/supertab'					"vim-supertab: autocomplete with tab
 
-" vim-indentline: draw indent line
-Plug 'Yggdroot/indentLine'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+                                            "deoplete.vim: autocomplete
+Plug 'zchee/deoplete-jedi'					"python
 
-" vim-ycm: youcompleteme
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-Plug 'Valloric/YouCompleteMe'
+"Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }		"vim-ycm: youcompleteme autocomplete
+"Plug 'Valloric/YouCompleteMe'
 
-" vimtex
-Plug 'lervag/vimtex'
-
+Plug 'lervag/vimtex'						"vimtex
 
 " ================= COLORSCHEME
 Plug 'chriskempson/base16-vim'
+Plug 'iCyMind/NeoSolarized'
+Plug 'pthk/vim-luna'
+Plug 'tomasr/molokai'
 
 call plug#end()
 
-
-"" ================= PATHOGEN =========================
-"" This loads all the plugins in ~/.vim/plugins
-"" Use tpope's pathogen plugin to manage all other plugins
-"
-""runtime plugins/tpope-vim-pathogen/autoload/pathogen.vim
-"call pathogen#infect()
-"call pathogen#helptags()
-""call pathogen#runtime_append_all_bundles()
-"
 " ================= GENERAL ==========================
 set number                      "Line numbers are good
 set backspace=indent,eol,start  "Allow backspace in insert mode
 set history=100                 "Store lots of :cmdline history
 set showcmd                     "Show incomplete cmds down the bottom
-set showmode                    "Show current mode down the bottom
 set showmatch                   "Do matching brackets
 set smartcase                   "Do smart case matching
 set autoread                    "Reload files changed outside vim
 set wrap                        "Soft Wrapping text (fit within window size)
-set lazyredraw                  "Buffer screen update
 set encoding=utf-8              "Standard encoding to UTF-8
 set ffs=unix,dos,mac            "Unix as the standard filetype
 set laststatus=2                "Set statusline = 2
+set noshowmode                  "Show current mode down the bottom (vim-airline)
 set colorcolumn=80
 set cinoptions=t0
-"" This makes vim act like all other editors, buffers can
-"" exist in the background without being in a window.
-"" http://items.sjbach.com/319/configuring-vim-right
-set hidden
+set hidden 			            "Hide buffers in background
+set lazyredraw                  "Buffer screen update
+set linebreak           	    "Wrap lines at convenient points
+set list                        "Enable listchars
+set listchars=tab:\ \ ,trail:· 	"Set trails for tabs and spaces
 
-" Disable bells
+
+"" Disable bells
 set noerrorbells
 set novisualbell
 set tm=500
 autocmd VimEnter * set vb t_vb=
 
-" Latex favor
-let g:tex_flavor = "latex"
+let g:tex_flavor = "latex" 	" Latex favor
+
+" ================= TURN OFF SWAP FILES ==============
+set noswapfile
+set nobackup
+set nowb
+
+" ================= PERSISTENT UNDO ==================
+" Keep undo history across sessions, by storing in file.
+silent !mkdir ~/.config/nvim/backups > /dev/null 2>&1
+set undodir=~/.config/nvim/backups
+set undofile
+
+" ================= INDENTATION ======================
+set autoindent          "Auto indent
+set smartindent         "Smart indent
+set expandtab           "Use spaces instead of tabs
+set smarttab
+
+set shiftwidth=4        "1 tab == 4 spaces
+set softtabstop=4
+set tabstop=4
+
+set cindent
+
+"Setting makefiles with tabs, not spaces
+autocmd FileType make setlocal noexpandtab
+
 
 " ================ CURSOR =============================
 " Restore cursor position to where it was before
@@ -104,39 +118,6 @@ nnoremap <esc><esc> :silent! nohlsearch<cr>
                         "Disable hilight searches
 "set viminfo='100,f1    "Save up to 100 marks, enable capital marks
 
-
-" ================= TURN OFF SWAP FILES ==============
-set noswapfile
-set nobackup
-set nowb
-
-" ================= PERSISTENT UNDO ==================
-" Keep undo history across sessions, by storing in file.
-" Only works all the time.
-
-silent !mkdir ~/.vim/backups > /dev/null 2>&1
-set undodir=~/.vim/backups
-set undofile
-
-" ================= INDENTATION ======================
-set autoindent          "Auto indent
-set smartindent         "Smart indent
-set expandtab           "Use spaces instead of tabs
-set smarttab
-
-set shiftwidth=4        "1 tab == 4 spaces
-set softtabstop=4
-set tabstop=4
-set ts=4
-
-set cindent
-
-filetype plugin indent on
-
-" Display tabs and trailing spaces visually
-set list listchars=tab:\ \ ,trail:·
-set linebreak           "Wrap lines at convenient points
-
 " ================= FOLDS ============================
 set foldmethod=indent   "Fold based on indent
 set nofoldenable        "Dont fold by default
@@ -148,21 +129,17 @@ set nofoldenable        "Dont fold by default
 "set sidescrolloff=15
 "set sidescroll=1
 "set cul!
+"set grepprg=grep\ -nH\ $*
 
-"Setting makefiles with tabs, not spaces
-autocmd FileType make setlocal noexpandtab
-
-set grepprg=grep\ -nH\ $*
-
-" ================= KEY MAP ==========================
-if &term =~ '^screen'
-    "TMUX will send xterm-style keys when its xterm-keys option is on
-    execute "set <xUp>=\e[1;*A"
-    execute "set <xDown>=\e[1;*B"
-    execute "set <xRight>=\e[1;*C"
-    execute "set <xLeft>=\e[1;*D"
-endif
-
+"" ================= KEY MAP ==========================
+"if &term =~ '^screen'
+"    "TMUX will send xterm-style keys when its xterm-keys option is on
+"    execute "set <xUp>=\e[1;*A"
+"    execute "set <xDown>=\e[1;*B"
+"    execute "set <xRight>=\e[1;*C"
+"    execute "set <xLeft>=\e[1;*D"
+"endif
+"
 " ================= COPY PASTE =======================
 "Copy to X11 clipboard
 map <Leader>y "+yy
@@ -174,32 +151,29 @@ map <Leader>p "+p
 set clipboard+=unnamed
 
 " ================ FANCY COLOR =======================
-" Enable full color supported
+set termguicolors       "Enable full color supported
 set t_Co=256
+syntax on               "Turn on syntax highlighting
 
-"Turn on syntax highlighting
-syntax on
-
-"Enable python syntax highlight
 let python_highlight_all = 1
-
-"Set background dark
-set background=dark
+                        "Enable python syntax highlight
+"
+set background=dark     "Set background dark
 colorscheme molokai
+"colorscheme NeoSolarized
 
-
-autocmd FileType tex,latex
-    \ set background=light |
-    \ colorscheme base16-default-dark |
-    \ set spell
-
+"autocmd FileType tex,latex
+"    \ set background=light |
+"    \ colorscheme base16-default-dark |
+"    \ set spell
+"
 autocmd FileType python
-    \ colorscheme luna-term
+    \ colorscheme luna
 
 function! SetColor()
 
     "Highlight normal color
-    hi Normal ctermbg=NONE guibg=NONE ctermfg=255 guifg=#FFFFFF
+    hi Normal ctermbg=233 guibg=#1e1e1e ctermfg=255 guifg=#FFFFFF
 
     "Highlight line number
     hi LineNr ctermbg=NONE guibg=NONE ctermfg=240 guifg=#585858
@@ -214,7 +188,7 @@ function! SetColor()
     hi Search ctermbg=220 guibg=#FFD700 ctermfg=16 guifg=#000000
 
     "Highlight cursorline
-    hi CursorLine ctermbg=235 guibg=#262626 cterm=none gui=none
+    hi CursorLine ctermbg=235 guibg=#333333 cterm=NONE gui=NONE
     hi CursorLineNR ctermfg=208 guifg=#ff8700 ctermbg=NONE guibg=NONE
 
     endfunction
@@ -222,9 +196,7 @@ function! SetColor()
 autocmd FileType * call SetColor()
 
 " ================= PLUGINS ==========================
-" ================= YOUCOMPLETEME
-set completeopt-=preview
-let g:ycm_add_preview_to_completeopt = 0
+" ================= DEOPLETE
+let g:deoplete#enable_at_startup = 1 "Enable deoplete
 
 source $HOME/.vimrc-plugins
-

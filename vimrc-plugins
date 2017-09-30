@@ -1,32 +1,4 @@
 " ================== VIM PLUGINS CONFIGURATION ===============================
-" Use vim-plug as vim plugin manager
-call plug#begin('~/.vim/plugged')
-
-" vim-airline: status line
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
-" vim-supertab: autocomplete with tab
-Plug 'ervandew/supertab'
-
-" vim-syntastic: syntax checker
-Plug 'scrooloose/syntastic'
-
-" vim-delimitMate: smart closing quotes, parenthesis, brackets, etc.
-Plug 'Raimondi/delimitMate'
-
-" vim-indentline: draw indent line
-Plug 'Yggdroot/indentLine'
-
-" vim-ycm: youcompleteme
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-Plug 'Valloric/YouCompleteMe'
-
-" vimtex
-Plug 'lervag/vimtex'
-
-call plug#end()
-
 " ================= AIRLINE
 let g:airline_theme = 'powerlineish'
 let g:airline_left_sep=''
@@ -60,7 +32,6 @@ let g:syntastic_c_compiler = 'gcc'
 let g:syntastic_python_pylint_args = '-d C0111 -d C0326 -d C0103'
 let g:syntastic_python_python_use_codec = 1
 
-
 " ================= DELIMITMATE
 let g:delimitMate_expand_cr = 1
 let g:delimitMate_jump_expansion = 1
@@ -72,6 +43,5 @@ let g:indentLine_char = '│'
 let g:indentLine_color_term = 239
 let g:indentLine_fileTypeExclude = ['tex', 'html']
 
-" ================= YOUCOMPLETEME
-set completeopt-=preview
-let g:ycm_add_preview_to_completeopt = 0
+" ================= VIMTEX
+let g:vimtex_compiler_latexmk = {'callback' : 0}

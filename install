@@ -1,12 +1,21 @@
 #!/bin/bash
 
-echo "[+] INSTALL VIM ..."
+echo "[+] INSTALL VIM CONFIG ..."
 cp vimrc $HOME/.vimrc
 cp vimrc-plugins $HOME/.vimrc-plugins
 
 curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-echo "[+] INSTALL COLORSCHEMES ..."
+echo "[+] INSTALL VIM COLORSCHEMES ..."
 cat themes | xargs -L 1 ./theme.sh
 
+echo "[+] INSTALL NEOVIM CONFIG ..."
+mkdir -p $HOME/.config
+mkdir -p $HOME/.config/nvim
+
+cp init.vim $HOME/.config/nvim/init.vim
+pip2 install --user neovim --upgrade
+pip3 install --user neovim --upgrade
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
