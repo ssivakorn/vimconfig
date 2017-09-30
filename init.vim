@@ -93,8 +93,8 @@ autocmd FileType make setlocal noexpandtab
 
 " ================ CURSOR =============================
 " Restore cursor position to where it was before
-au BufWinLeave ?* mkview 1
-au BufWinEnter ?* silent loadview 1
+"au BufWinLeave ?* mkview 1
+"au BufWinEnter ?* silent loadview 1
 "autocmd BufReadPost *
 "     \ if line("'\"") > 0 && line("'\"") <= line("$") |
 "     \   exe "normal! g`\"" |
