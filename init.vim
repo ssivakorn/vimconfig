@@ -21,18 +21,21 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
                                             "deoplete.vim: autocomplete
 Plug 'zchee/deoplete-jedi'					"python
 
-"Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }		"vim-ycm: youcompleteme autocomplete
-"Plug 'Valloric/YouCompleteMe'
+Plug 'scrooloose/nerdcommenter'             "nerdcommenter: comment
 
 Plug 'lervag/vimtex'						"vimtex
+Plug 'sheerun/vim-polyglot'                 "vim-polyglot: language packs
 
 " ================= COLORSCHEME
-Plug 'chriskempson/base16-vim'
-Plug 'iCyMind/NeoSolarized'
-Plug 'pthk/vim-luna'
 Plug 'tomasr/molokai'
+Plug 'pthk/vim-luna'
+Plug 'iCyMind/NeoSolarized'
+Plug 'rakr/vim-one'
+Plug 'tyrannicaltoucan/vim-quantum'
 
 call plug#end()
+
+filetype plugin indent on       "Enable plugins and indents by filetype
 
 " ================= GENERAL ==========================
 set number                      "Line numbers are good
@@ -93,12 +96,12 @@ autocmd FileType make setlocal noexpandtab
 
 " ================ CURSOR =============================
 " Restore cursor position to where it was before
-"au BufWinLeave ?* mkview 1
-"au BufWinEnter ?* silent loadview 1
-"autocmd BufReadPost *
-"     \ if line("'\"") > 0 && line("'\"") <= line("$") |
-"     \   exe "normal! g`\"" |
-"     \ endif
+au BufWinLeave ?* mkview 1
+au BufWinEnter ?* silent loadview 1
+autocmd BufReadPost *
+     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+     \   exe "normal! g`\"" |
+     \ endif
 
 "Enable mouse control
 "set mouse=a
@@ -157,16 +160,16 @@ syntax on               "Turn on syntax highlighting
 
 let python_highlight_all = 1
                         "Enable python syntax highlight
-"
+
 set background=dark     "Set background dark
 colorscheme molokai
 "colorscheme NeoSolarized
 
-"autocmd FileType tex,latex
-"    \ set background=light |
-"    \ colorscheme base16-default-dark |
-"    \ set spell
-"
+autocmd FileType tex,latex
+    \ set background=dark |
+    \ colorscheme molokai |
+    \ set spell
+
 autocmd FileType python
     \ colorscheme luna
 
@@ -197,6 +200,7 @@ autocmd FileType * call SetColor()
 
 " ================= PLUGINS ==========================
 " ================= DEOPLETE
+set completeopt-=preview
 let g:deoplete#enable_at_startup = 1 "Enable deoplete
 
 source $HOME/.vimrc-plugins

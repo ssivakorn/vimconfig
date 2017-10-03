@@ -8,29 +8,24 @@ set nocompatible
 call plug#begin('~/.vim/plugged')
 
 " ================= PLUGINS
-" vim-airline: status line
-Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline'              " vim-airline: status line
 Plug 'vim-airline/vim-airline-themes'
 
-" vim-supertab: autocomplete with tab
-Plug 'ervandew/supertab'
+Plug 'scrooloose/syntastic'                 " vim-syntastic: syntax checker
 
-" vim-syntastic: syntax checker
-Plug 'scrooloose/syntastic'
+Plug 'Raimondi/delimitMate'                 " vim-delimitMate: smart closing quotes etc.
 
-" vim-delimitMate: smart closing quotes, parenthesis, brackets, etc.
-Plug 'Raimondi/delimitMate'
+Plug 'Yggdroot/indentLine'                  " vim-indentline: draw indent line
 
-" vim-indentline: draw indent line
-Plug 'Yggdroot/indentLine'
+Plug 'ervandew/supertab'                    " vim-supertab: autocomplete with tab
 
-" vim-ycm: youcompleteme
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'               "vim-ycm: youcompleteme
 
-" vimtex
-Plug 'lervag/vimtex'
+Plug 'scrooloose/nerdcommenter'             "nerdcommenter: comment
 
+Plug 'lervag/vimtex'                        "vimtex
+Plug 'sheerun/vim-polyglot'                 "vim-polyglot: language packs
 
 " ================= COLORSCHEME
 Plug 'chriskempson/base16-vim'
@@ -38,15 +33,8 @@ Plug 'chriskempson/base16-vim'
 call plug#end()
 
 
-"" ================= PATHOGEN =========================
-"" This loads all the plugins in ~/.vim/plugins
-"" Use tpope's pathogen plugin to manage all other plugins
-"
-""runtime plugins/tpope-vim-pathogen/autoload/pathogen.vim
-"call pathogen#infect()
-"call pathogen#helptags()
-""call pathogen#runtime_append_all_bundles()
-"
+filetype plugin indent on       "Enable plugins and indents by filetype
+
 " ================= GENERAL ==========================
 set number                      "Line numbers are good
 set backspace=indent,eol,start  "Allow backspace in insert mode
@@ -131,7 +119,6 @@ set ts=4
 
 set cindent
 
-filetype plugin indent on
 
 " Display tabs and trailing spaces visually
 set list listchars=tab:\ \ ,trail:·

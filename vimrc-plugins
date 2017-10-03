@@ -45,3 +45,7 @@ let g:indentLine_fileTypeExclude = ['tex', 'html']
 
 " ================= VIMTEX
 let g:vimtex_compiler_latexmk = {'callback' : 0}
+
+" ================= VIMTEX
+let g:NERDSpaceDelims = 1               "space after comment
+let g:NERDTrimTrailingWhitespace = 1    "remove whitespace when uncomment
