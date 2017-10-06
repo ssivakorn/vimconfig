@@ -8,16 +8,15 @@ set nocompatible
 call plug#begin('~/.vim/plugged')
 
 " ================= PLUGINS
-Plug 'vim-airline/vim-airline'              " vim-airline: status line
+Plug 'vim-airline/vim-airline'              "vim-airline: status line
 Plug 'vim-airline/vim-airline-themes'
 
-Plug 'scrooloose/syntastic'                 " vim-syntastic: syntax checker
+Plug 'scrooloose/syntastic'                 "vim-syntastic: syntax checker
 
-Plug 'Raimondi/delimitMate'                 " vim-delimitMate: smart closing quotes etc.
+Plug 'Raimondi/delimitMate'                 "vim-delimitMate: smart closing quotes etc.
+Plug 'nathanaelkane/vim-indent-guides'      "vim-indentguides: draw indent line
 
-Plug 'Yggdroot/indentLine'                  " vim-indentline: draw indent line
-
-Plug 'ervandew/supertab'                    " vim-supertab: autocomplete with tab
+Plug 'ervandew/supertab'                    "vim-supertab: autocomplete with tab
 
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 Plug 'Valloric/YouCompleteMe'               "vim-ycm: youcompleteme

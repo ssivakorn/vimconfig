@@ -13,8 +13,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/syntastic'					"vim-syntastic: syntax checker
 
 Plug 'Raimondi/delimitMate'					"vim-delimitMate: smart closing quotes, etc.
-Plug 'Yggdroot/indentLine' 					"vim-indentline: draw indent line
-
+Plug 'nathanaelkane/vim-indent-guides'      "vim-indentguides: draw indent line
 Plug 'ervandew/supertab'					"vim-supertab: autocomplete with tab
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -25,6 +24,7 @@ Plug 'scrooloose/nerdcommenter'             "nerdcommenter: comment
 
 Plug 'lervag/vimtex'						"vimtex
 Plug 'sheerun/vim-polyglot'                 "vim-polyglot: language packs
+Plug 'vim-python/python-syntax'
 
 " ================= COLORSCHEME
 Plug 'tomasr/molokai'
@@ -36,6 +36,7 @@ Plug 'tyrannicaltoucan/vim-quantum'
 call plug#end()
 
 filetype plugin indent on       "Enable plugins and indents by filetype
+syntax on                       "Enable syntax
 
 " ================= GENERAL ==========================
 set number                      "Line numbers are good
@@ -53,7 +54,7 @@ set noshowmode                  "Show current mode down the bottom (vim-airline)
 set colorcolumn=80
 set cinoptions=t0
 set hidden 			            "Hide buffers in background
-set lazyredraw                  "Buffer screen update
+"set lazyredraw                  "Buffer screen update
 set linebreak           	    "Wrap lines at convenient points
 set list                        "Enable listchars
 set listchars=tab:\ \ ,trail:· 	"Set trails for tabs and spaces
@@ -156,9 +157,9 @@ set clipboard+=unnamed
 " ================ FANCY COLOR =======================
 set termguicolors       "Enable full color supported
 set t_Co=256
-syntax on               "Turn on syntax highlighting
 
-let python_highlight_all = 1
+let g:polyglot_disable = ['python']
+let g:python_highlight_all = 1
                         "Enable python syntax highlight
 
 set background=dark     "Set background dark
