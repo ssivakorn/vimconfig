@@ -12,8 +12,8 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'scrooloose/syntastic'					"vim-syntastic: syntax checker
 
-Plug 'Raimondi/delimitMate'					"vim-delimitMate: smart closing quotes, etc.
-Plug 'nathanaelkane/vim-indent-guides'      "vim-indentguides: draw indent line
+Plug 'Yggdroot/indentLine'                  "vim-indentline: draw indent line
+
 Plug 'ervandew/supertab'					"vim-supertab: autocomplete with tab
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -24,14 +24,13 @@ Plug 'scrooloose/nerdcommenter'             "nerdcommenter: comment
 
 Plug 'lervag/vimtex'						"vimtex
 Plug 'sheerun/vim-polyglot'                 "vim-polyglot: language packs
-Plug 'vim-python/python-syntax'
+Plug 'vim-python/python-syntax'             "vim-python syntax
+Plug 'jiangmiao/auto-pairs'
 
 " ================= COLORSCHEME
+Plug 'chriskempson/base16-vim'
 Plug 'tomasr/molokai'
 Plug 'pthk/vim-luna'
-Plug 'iCyMind/NeoSolarized'
-Plug 'rakr/vim-one'
-Plug 'tyrannicaltoucan/vim-quantum'
 
 call plug#end()
 
@@ -54,7 +53,7 @@ set noshowmode                  "Show current mode down the bottom (vim-airline)
 set colorcolumn=80
 set cinoptions=t0
 set hidden 			            "Hide buffers in background
-"set lazyredraw                  "Buffer screen update
+set lazyredraw                  "Buffer screen update
 set linebreak           	    "Wrap lines at convenient points
 set list                        "Enable listchars
 set listchars=tab:\ \ ,trail:· 	"Set trails for tabs and spaces
@@ -94,12 +93,11 @@ set cindent
 "Setting makefiles with tabs, not spaces
 autocmd FileType make setlocal noexpandtab
 
-
 " ================ CURSOR =============================
 " Restore cursor position to where it was before
-au BufWinLeave ?* mkview 1
-au BufWinEnter ?* silent loadview 1
-autocmd BufReadPost *
+"au BufWinLeave ?* mkview 1
+"au BufWinEnter ?* silent loadview 1
+au BufReadPost *
      \ if line("'\"") > 0 && line("'\"") <= line("$") |
      \   exe "normal! g`\"" |
      \ endif
@@ -145,26 +143,22 @@ set nofoldenable        "Dont fold by default
 "endif
 "
 " ================= COPY PASTE =======================
-"Copy to X11 clipboard
-map <Leader>y "+yy
-"Cut to X11 clipboard
-map <Leader>d "+dd
-"Paste X11 clipboard
-map <Leader>p "+p
+map <Leader>y "+yy          "Copy to X11 clipboard
+map <Leader>d "+dd          "Cut to X11 clipboard
+map <Leader>p "+p           "Paste X11 clipboard
 
 set clipboard+=unnamed
 
 " ================ FANCY COLOR =======================
-set termguicolors       "Enable full color supported
+set termguicolors          "Enable full color supported
 set t_Co=256
 
 let g:polyglot_disable = ['python']
 let g:python_highlight_all = 1
-                        "Enable python syntax highlight
+                            "Enable python syntax highlight
 
-set background=dark     "Set background dark
+set background=dark         "Set background dark
 colorscheme molokai
-"colorscheme NeoSolarized
 
 autocmd FileType tex,latex
     \ set background=dark |
