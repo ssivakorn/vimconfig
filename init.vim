@@ -26,6 +26,7 @@ Plug 'lervag/vimtex'						"vimtex
 Plug 'sheerun/vim-polyglot'                 "vim-polyglot: language packs
 Plug 'vim-python/python-syntax'             "vim-python syntax
 Plug 'jiangmiao/auto-pairs'
+Plug 'vim-scripts/dbext.vim'
 
 " ================= COLORSCHEME
 Plug 'chriskempson/base16-vim'
@@ -143,11 +144,7 @@ set nofoldenable        "Dont fold by default
 "endif
 "
 " ================= COPY PASTE =======================
-map <Leader>y "+yy          "Copy to X11 clipboard
-map <Leader>d "+dd          "Cut to X11 clipboard
-map <Leader>p "+p           "Paste X11 clipboard
-
-set clipboard+=unnamed
+set clipboard+=unnamedplus
 
 " ================ FANCY COLOR =======================
 set termguicolors          "Enable full color supported

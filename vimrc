@@ -13,25 +13,27 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'scrooloose/syntastic'                 "vim-syntastic: syntax checker
 
-Plug 'Raimondi/delimitMate'                 "vim-delimitMate: smart closing quotes etc.
-Plug 'nathanaelkane/vim-indent-guides'      "vim-indentguides: draw indent line
+Plug 'Yggdroot/indentLine'                  "vim-indentline: draw indent line
 
 Plug 'ervandew/supertab'                    "vim-supertab: autocomplete with tab
-
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-Plug 'Valloric/YouCompleteMe'               "vim-ycm: youcompleteme
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+                                            "vim-ycm: youcompleteme
 
 Plug 'scrooloose/nerdcommenter'             "nerdcommenter: comment
 
 Plug 'lervag/vimtex'                        "vimtex
 Plug 'sheerun/vim-polyglot'                 "vim-polyglot: language packs
+Plug 'vim-python/python-syntax'             "vim-python syntax
+Plug 'jiangmiao/auto-pairs'
 
 " ================= COLORSCHEME
 Plug 'chriskempson/base16-vim'
+Plug 'tomasr/molokai'
+Plug 'pthk/vim-luna'
 
 call plug#end()
 
-
+syntax on                       "Turn on syntax highlighting
 filetype plugin indent on       "Enable plugins and indents by filetype
 
 " ================= GENERAL ==========================
@@ -66,12 +68,12 @@ let g:tex_flavor = "latex"
 
 " ================ CURSOR =============================
 " Restore cursor position to where it was before
-au BufWinLeave ?* mkview 1
-au BufWinEnter ?* silent loadview 1
-"autocmd BufReadPost *
-"     \ if line("'\"") > 0 && line("'\"") <= line("$") |
-"     \   exe "normal! g`\"" |
-"     \ endif
+"au BufWinLeave ?* mkview 1
+"au BufWinEnter ?* silent loadview 1
+au BufReadPost *
+     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+     \   exe "normal! g`\"" |
+     \ endif
 
 "Enable mouse control
 "set mouse=a
@@ -84,12 +86,12 @@ augroup CursorLine
 augroup END
 
 " ================= SEARCH ===========================
-set ignorecase          "Ignore case when searching
-set incsearch           "Find the next match as we type the search
-set hlsearch            "Hilight searches by default
+set ignorecase              "Ignore case when searching
+set incsearch               "Find the next match as we type the search
+set hlsearch                "Hilight searches by default
 nnoremap <esc><esc> :silent! nohlsearch<cr>
-                        "Disable hilight searches
-"set viminfo='100,f1    "Save up to 100 marks, enable capital marks
+                            "Disable hilight searches
+"set viminfo='100,f1        "Save up to 100 marks, enable capital marks
 
 
 " ================= TURN OFF SWAP FILES ==============
@@ -106,12 +108,12 @@ set undodir=~/.vim/backups
 set undofile
 
 " ================= INDENTATION ======================
-set autoindent          "Auto indent
-set smartindent         "Smart indent
-set expandtab           "Use spaces instead of tabs
+set autoindent              "Auto indent
+set smartindent             "Smart indent
+set expandtab               "Use spaces instead of tabs
 set smarttab
 
-set shiftwidth=4        "1 tab == 4 spaces
+set shiftwidth=4            "1 tab == 4 spaces
 set softtabstop=4
 set tabstop=4
 set ts=4
@@ -119,30 +121,30 @@ set ts=4
 set cindent
 
 
-" Display tabs and trailing spaces visually
 set list listchars=tab:\ \ ,trail:·
-set linebreak           "Wrap lines at convenient points
+                            " Display tabs and trailing spaces visually
+set linebreak               "Wrap lines at convenient points
 
 " ================= FOLDS ============================
-set foldmethod=indent   "Fold based on indent
-set nofoldenable        "Dont fold by default
-"set foldnestmax=3       "Deepest fold is 3 levels
+set foldmethod=indent       "Fold based on indent
+set nofoldenable            "Dont fold by default
+"set foldnestmax=3          "Deepest fold is 3 levels
 
 
 " ================= SCROLLING ========================
-"set scrolloff=8        "Start scrolling when we're 8 lines away from margins
+"set scrolloff=8            "Start scrolling when we're 8 lines away from margins
 "set sidescrolloff=15
 "set sidescroll=1
 "set cul!
 
-"Setting makefiles with tabs, not spaces
-autocmd FileType make setlocal noexpandtab
+au FileType make setlocal noexpandtab
+                            "Setting makefiles with tabs, not spaces
 
 set grepprg=grep\ -nH\ $*
 
 " ================= KEY MAP ==========================
+"TMUX will send xterm-style keys when its xterm-keys option is on
 if &term =~ '^screen'
-    "TMUX will send xterm-style keys when its xterm-keys option is on
     execute "set <xUp>=\e[1;*A"
     execute "set <xDown>=\e[1;*B"
     execute "set <xRight>=\e[1;*C"
@@ -150,29 +152,29 @@ if &term =~ '^screen'
 endif
 
 " ================= COPY PASTE =======================
-"Copy to X11 clipboard
-map <Leader>y "+yy
-"Cut to X11 clipboard
-map <Leader>d "+dd
-"Paste X11 clipboard
-map <Leader>p "+p
+" Copy to clipboard
+"vnoremap  <leader>y  "+y
+"nnoremap  <leader>Y  "+yg_
+"nnoremap  <leader>y  "+y
+"nnoremap  <leader>yy  "+yy
+"
+"" Paste from clipboard
+"nnoremap <leader>p "+p
+"nnoremap <leader>P "+P
+"vnoremap <leader>p "+p
+"vnoremap <leader>P "+P
+"
 
-set clipboard+=unnamed
+set clipboard+=unnamedplus
 
 " ================ FANCY COLOR =======================
-" Enable full color supported
-set t_Co=256
-
-"Turn on syntax highlighting
-syntax on
-
-"Enable python syntax highlight
+set t_Co=256                "Enable full color supported
 let python_highlight_all = 1
+                            "Enable python syntax highlight
 
 "Set background dark
 set background=dark
 colorscheme molokai
-
 
 autocmd FileType tex,latex
     \ set background=light |
