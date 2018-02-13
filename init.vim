@@ -22,16 +22,19 @@ Plug 'zchee/deoplete-jedi'					"python
 
 Plug 'scrooloose/nerdcommenter'             "nerdcommenter: comment
 
-Plug 'lervag/vimtex'						"vimtex
+"Plug 'lervag/vimtex'						"vimtex
 Plug 'sheerun/vim-polyglot'                 "vim-polyglot: language packs
 Plug 'vim-python/python-syntax'             "vim-python syntax
 Plug 'jiangmiao/auto-pairs'
 Plug 'vim-scripts/dbext.vim'
+Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'LaTex-Box-Team/LaTeX-Box'
 
 " ================= COLORSCHEME
-Plug 'chriskempson/base16-vim'
+"Plug 'chriskempson/base16-vim'
 Plug 'tomasr/molokai'
 Plug 'pthk/vim-luna'
+Plug 'Soares/base16.nvim'
 
 call plug#end()
 
@@ -159,7 +162,7 @@ colorscheme molokai
 
 autocmd FileType tex,latex
     \ set background=dark |
-    \ colorscheme molokai |
+    \ colorscheme colors |
     \ set spell
 
 autocmd FileType python
