@@ -31,7 +31,7 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'LaTex-Box-Team/LaTeX-Box'
 
 " ================= COLORSCHEME
-"Plug 'chriskempson/base16-vim'
+Plug 'chriskempson/base16-vim'
 Plug 'tomasr/molokai'
 Plug 'pthk/vim-luna'
 Plug 'Soares/base16.nvim'
@@ -162,7 +162,7 @@ colorscheme molokai
 
 autocmd FileType tex,latex
     \ set background=dark |
-    \ colorscheme colors |
+    \ colorscheme base16-macintosh |
     \ set spell
 
 autocmd FileType python
