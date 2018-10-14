@@ -1,29 +1,48 @@
-My simple vimrc configuration for Linux/Mac environments.
+# vimconfig
+My simple vimrc configuration for vim and neovim Linux/Mac environments.
 
-Installation
+## Features
+Basic vim configures, some nices plugins and colorschemes for coding including
+
+### Plugins
+- vim-airline 
+- vim-airline-themes
+- Valloric/YouCompleteMe
+- davidhalter/jedi-vim
+- sheerun/vim-polyglot
+- Yggdroot/indentLine
+- ervandew/supertab
+- jiangmiao/auto-pairs
+- scrooloose/nerdtree
+- majutsushi/tagbar
+- w0rp/ale
+
+### Colorschemes
+- tomasr/molokai
+- pthk/vim-luna
+- nielsmadan/harlequin
+- dracula/vim
+- nanotech/jellybeans.vim
+- tyrannicaltoucan/vim-quantum
+- rakr/vim-one
+- mhartington/oceanic-next
+
+For the updated list: https://github.com/ssivakorn/vimconfig/blob/master/vimrc-plugins
+
+## Installation
 ------------
-1. Run installer
 ```shell
-$ chmod +x install.sh
+$ chmod +x install
 $ ./install
 ```
 
+### Dependencies:
+- curl (https://curl.haxx.se/)
+- git (https://git-scm.com/)
+- exuberant-ctags
 
-2. Install Ctag must be installed to enable taglist:
 
-* Debian / Ubuntu
-```shell
-$ sudo apt-get install exuberant-ctags
-```
-
-* Mac OS
-```shell
-$ brew install ctags
-$ alias ctags="`brew --prefix`/bin/ctags"
-```
-
-Uninstall
----------
+## To uninstall
 ```shell
 $ ./uninstall
 ```
