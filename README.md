@@ -4,7 +4,7 @@ My simple vimrc configuration for vim and neovim Linux/Mac environments.
 ## Features
 Basic vim configures, some nices plugins and colorschemes for coding including
 
-### Plugins
+#### Plugins:
 - vim-airline 
 - vim-airline-themes
 - Valloric/YouCompleteMe
@@ -17,7 +17,7 @@ Basic vim configures, some nices plugins and colorschemes for coding including
 - majutsushi/tagbar
 - w0rp/ale
 
-### Colorschemes
+#### Colorschemes:
 - tomasr/molokai
 - pthk/vim-luna
 - nielsmadan/harlequin
@@ -30,8 +30,8 @@ Basic vim configures, some nices plugins and colorschemes for coding including
 For the updated list: https://github.com/ssivakorn/vimconfig/blob/master/vimrc-plugins
 
 ## Installation
+### To install
 ```shell
-$ chmod +x install
 $ ./install
 ```
 
@@ -39,9 +39,10 @@ $ ./install
 - curl (https://curl.haxx.se/)
 - git (https://git-scm.com/)
 - exuberant-ctags
+- python3, python3-dev
 
 
-## To uninstall
+### To uninstall
 ```shell
 $ ./uninstall
 ```
