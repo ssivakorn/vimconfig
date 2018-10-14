@@ -8,14 +8,14 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'davidhalter/jedi-vim'
                                         "autocomplete
-Plug 'scrooloose/syntastic'				"syntax checker
 Plug 'sheerun/vim-polyglot'             "language packs: syntax, indent
 
 Plug 'Yggdroot/indentLine'              "draw indent line
 Plug 'ervandew/supertab'				"autocomplete with tab
 Plug 'jiangmiao/auto-pairs'             "insert/delete brackets, quotes, etc.
 Plug 'scrooloose/nerdtree'              "tree explorer
-
+Plug 'majutsushi/tagbar'                "tagbar
+Plug 'w0rp/ale'                         "asynchronous lint engine
 
 " ================= COLORSCHEME
 Plug 'chriskempson/base16-vim'
@@ -75,7 +75,17 @@ let g:indentLine_fileTypeExclude = ['tex', 'html']
 
 " ================= NERDTREE
 let NERDTreeQuitOnOpen=1
-map <F2> :NERDTreeToggle<CR>
+nmap <F2> :NERDTreeToggle<CR>
+
+" ================= TAGBAR
+nmap <F8> :TagbarToggle<CR>
+
+" ================= ALE
+let g:ale_completion_enabled = 1
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+let g:airline#extensions#ale#enabled = 1
+nmap <F3> :ALEToggle<CR>
 
 " ================= YOUCOMPLETEME
 let g:ycm_auto_trigger = 1
@@ -89,3 +99,4 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:jedi#completions_enabled = 0
 let g:jedi#show_call_signatures = 1
 let g:jedi#show_call_signatures_delay = 0
+
