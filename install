@@ -1,21 +1,53 @@
 #!/bin/bash
+check_dependency()
+{
+    CMD_X=$1
+    echo -n "[?] checking dependency: $CMD_X ..."
+    if ! [ -x "$(command -v $CMD_X)" ]
+    then
+        echo ""
+        echo "[-] $CMD_X is not installed :(" >&2
+        exit 1
+    fi
+    echo " [OK]"
+}
 
-echo "[+] INSTALL VIM CONFIG ..."
+# installer requirement checks
+check_dependency 'curl'
+check_dependency 'git'
+check_dependency 'python'
+
+# vim
+echo "[+] setting up vim configure ..."
+mkdir -p $HOME/.vim
 cp vimrc $HOME/.vimrc
 cp vimrc-plugins $HOME/.vimrc-plugins
+cp vimrc-plugins-configure $HOME/.vimrc-plugins-configure
 
+echo "[+] installing vimplug ..."
 curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-echo "[+] INSTALL VIM COLORSCHEMES ..."
-cat themes | xargs -L 1 ./theme.sh
+echo "[+] installing vimplugins ..."
+vim +PlugInstall +qall
 
-echo "[+] INSTALL NEOVIM CONFIG ..."
+echo "[+] installing clang-completer ..."
+$HOME/.vim/plugged/YouCompleteMe/install.sh --clang-completer
+
+# neovim
+check_dependency 'nvim'
+
+echo "[+] setting up neovim configure ..."
 mkdir -p $HOME/.config
 mkdir -p $HOME/.config/nvim
+cp vimrc $HOME/.config/nvim/init.vim
 
-cp init.vim $HOME/.config/nvim/init.vim
+echo "[+] updating neovim ..."
 pip2 install --user neovim --upgrade
 pip3 install --user neovim --upgrade
+
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+echo "[+] installing vimplugins ..."
+nvim +PlugInstall +qall

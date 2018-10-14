@@ -1,6 +1,40 @@
-" ================== VIM PLUGINS CONFIGURATION ===============================
+" ================= PLUGINS
+filetype off
+call plug#begin('~/.vim/plugged')
+
+Plug 'vim-airline/vim-airline'			"status line
+Plug 'vim-airline/vim-airline-themes'
+
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'davidhalter/jedi-vim'
+                                        "autocomplete
+Plug 'scrooloose/syntastic'				"syntax checker
+Plug 'sheerun/vim-polyglot'             "language packs: syntax, indent
+
+Plug 'Yggdroot/indentLine'              "draw indent line
+Plug 'ervandew/supertab'				"autocomplete with tab
+Plug 'jiangmiao/auto-pairs'             "insert/delete brackets, quotes, etc.
+Plug 'scrooloose/nerdtree'              "tree explorer
+
+
+" ================= COLORSCHEME
+Plug 'chriskempson/base16-vim'
+Plug 'Soares/base16.nvim'
+Plug 'tomasr/molokai'
+Plug 'pthk/vim-luna'
+Plug 'nielsmadan/harlequin'
+Plug 'dracula/vim'
+Plug 'nanotech/jellybeans.vim'
+Plug 'tyrannicaltoucan/vim-quantum'
+Plug 'rakr/vim-one'
+Plug 'mhartington/oceanic-next'
+
+call plug#end()
+syntax on
+filetype plugin indent on
+
+" ================= PLUGINS CONFIGURATION =====================================
 " ================= AIRLINE
-let g:airline_theme = 'powerlineish'
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_exclude_preview=1
@@ -32,10 +66,6 @@ let g:syntastic_c_compiler = 'gcc'
 let g:syntastic_python_pylint_args = '-d C0111 -d C0326 -d C0103'
 let g:syntastic_python_python_use_codec = 1
 
-" ================= DELIMITMATE
-let g:delimitMate_expand_cr = 1
-let g:delimitMate_jump_expansion = 1
-
 " ================= INDENTLINE
 let g:indentLine_enabled = 1
 let g:indentLine_setConceal = 0
@@ -43,14 +73,19 @@ let g:indentLine_char = '│'
 let g:indentLine_color_term = 239
 let g:indentLine_fileTypeExclude = ['tex', 'html']
 
-" ================= VIMTEX
-let g:vimtex_compiler_latexmk = {'callback' : 0}
+" ================= NERDTREE
+let NERDTreeQuitOnOpen=1
+map <F2> :NERDTreeToggle<CR>
 
-" ================= VIMTEX
-let g:NERDSpaceDelims = 1               "space after comment
-let g:NERDTrimTrailingWhitespace = 1    "remove whitespace when uncomment
+" ================= YOUCOMPLETEME
+let g:ycm_auto_trigger = 1
+"let g:ycm_filetype_specific_completion_to_disable = { 'python': 1 }
+set completeopt-=preview
+let g:ycm_add_preview_to_completeopt = 0
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
 
-" ================= VIM INDENT GUIDES
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_guide_size = 1
-let g:indent_guides_start_level = 2
+" ================= JEDI-VIM
+let g:jedi#completions_enabled = 0
+let g:jedi#show_call_signatures = 1
+let g:jedi#show_call_signatures_delay = 0
