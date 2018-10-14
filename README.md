@@ -30,7 +30,6 @@ Basic vim configures, some nices plugins and colorschemes for coding including
 For the updated list: https://github.com/ssivakorn/vimconfig/blob/master/vimrc-plugins
 
 ## Installation
-------------
 ```shell
 $ chmod +x install
 $ ./install
