@@ -1,4 +1,4 @@
-" ================= PLUGINS
+" ================= PLUGINS ===================================================
 filetype off
 call plug#begin('~/.vim/plugged')
 
@@ -18,16 +18,15 @@ Plug 'majutsushi/tagbar'                "tagbar
 Plug 'w0rp/ale'                         "asynchronous lint engine
 
 " ================= COLORSCHEME
-Plug 'chriskempson/base16-vim'
-Plug 'Soares/base16.nvim'
 Plug 'tomasr/molokai'
 Plug 'pthk/vim-luna'
-Plug 'nielsmadan/harlequin'
 Plug 'dracula/vim'
 Plug 'nanotech/jellybeans.vim'
 Plug 'tyrannicaltoucan/vim-quantum'
 Plug 'rakr/vim-one'
-Plug 'mhartington/oceanic-next'
+Plug 'morhetz/gruvbox'
+Plug 'romainl/flattened'
+Plug 'sjl/badwolf'
 
 call plug#end()
 syntax on
