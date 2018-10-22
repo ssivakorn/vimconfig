@@ -112,7 +112,7 @@ set nofoldenable                "Dont fold by default
 set clipboard+=unnamedplus
 
 " ================= FANCY COLORS =====================
-set termguicolors               "Enable full color supported
+silent set termguicolors        "Enable full color supported
 if &term =~# '^screen'
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
@@ -126,6 +126,12 @@ set background=dark             "Set background dark
 silent colorscheme molokai      "Set default theme
 silent let g:airline_theme = 'powerlineish'
                                 "Set status-line theme
+
+" Set color for error and warning signs
+silent hi clear ALEErrorSign
+silent hi clear ALEWarningSign
+silent hi ALEErrorSign ctermbg=NONE ctermfg=red guifg=#FF0000
+silent hi ALEWarningSign ctermbg=NONE ctermfg=yellow guifg=#FFFF00
 
 autocmd FileType tex,latex
     \ set background=dark |
@@ -151,6 +157,10 @@ function! SetColor()
     hi PmenuSel ctermfg=15 guifg=#FFFFFF ctermbg=25 guibg=#1A49A5
     hi PmenuSbar ctermfg=15 guifg=#FFFFFF ctermbg=245 guibg=#8a8a8a
     hi PmenuThumb ctermfg=15 guifg=#FFFFFF ctermbg=25 guibg=#1A49A5
+    " hi Pmenu ctermbg=235 guibg=#2e3134 ctermfg=NONE guifg=NONE
+    " hi PmenuSel ctermfg=25 guifg=#1f6ad7 ctermbg=237 guibg=#46494c
+    " hi PmenuSbar ctermfg=15 guifg=#FFFFFF ctermbg=245 guibg=#8a8a8a
+    " hi PmenuThumb ctermfg=15 guifg=#FFFFFF ctermbg=25 guibg=#1A49A5
 
     "column color (right)
     hi ColorColumn ctermbg=236 guibg=#303030 ctermfg=255 guifg=#FFFFFF
@@ -165,3 +175,5 @@ function! SetColor()
 endfunction
 
 autocmd FileType * call SetColor()
+
+

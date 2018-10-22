@@ -16,6 +16,7 @@ Plug 'jiangmiao/auto-pairs'             "insert/delete brackets, quotes, etc.
 Plug 'scrooloose/nerdtree'              "tree explorer
 Plug 'majutsushi/tagbar'                "tagbar
 Plug 'w0rp/ale'                         "asynchronous lint engine
+Plug 'tomtom/tcomment_vim'              "comment
 
 " ================= COLORSCHEME
 Plug 'tomasr/molokai'
@@ -38,33 +39,33 @@ let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_exclude_preview=1
 
-" ================= SYNTASTIC
-let g:syntastic_mode_map = {
-        \ 'mode': 'active',
-        \ 'active_filetypes':   ['python', 'html', 'javascript', 'c'],
-        \ 'passive_filetypes':  ['java'] }
-
-highlight SyntasticWarning NONE
-highlight SyntasticError NONE
-
-let g:syntastic_echo_current_error = 1
-let g:syntastic_error_symbol='xx'
-let g:syntastic_warning_symbol='!!'
-let g:syntastic_check_on_wq = 1
-
-"let g:syntastic_style_error_symbol='>>'
-"let g:syntastic_style_warning_symbol='>>'
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-
-let g:syntastic_python_checkers = ['pyflakes']
-let g:syntastic_html_checkers = ['w3']
-let g:syntastic_c_compiler = 'gcc'
-
-" Disable some verbosy syntax checkers
-let g:syntastic_python_pylint_args = '-d C0111 -d C0326 -d C0103'
-let g:syntastic_python_python_use_codec = 1
-
+"" ================= SYNTASTIC
+" let g:syntastic_mode_map = {
+"        \ 'mode': 'active',
+"        \ 'active_filetypes':   ['python', 'html', 'javascript', 'c'],
+"        \ 'passive_filetypes':  ['java'] }
+"
+" highlight SyntasticWarning NONE
+" highlight SyntasticError NONE
+"
+" let g:syntastic_echo_current_error = 1
+" let g:syntastic_error_symbol='xx'
+" let g:syntastic_warning_symbol='!!'
+" let g:syntastic_check_on_wq = 1
+"
+" "let g:syntastic_style_error_symbol='>>'
+" "let g:syntastic_style_warning_symbol='>>'
+" "let g:syntastic_always_populate_loc_list = 1
+" "let g:syntastic_auto_loc_list = 1
+"
+" let g:syntastic_python_checkers = ['pyflakes']
+" let g:syntastic_html_checkers = ['w3']
+" let g:syntastic_c_compiler = 'gcc'
+"
+" " Disable some verbosy syntax checkers
+" let g:syntastic_python_pylint_args = '-d C0111 -d C0326 -d C0103'
+" let g:syntastic_python_python_use_codec = 1
+"
 " ================= INDENTLINE
 let g:indentLine_enabled = 1
 let g:indentLine_setConceal = 0
@@ -80,11 +81,13 @@ nmap <F2> :NERDTreeToggle<CR>
 nmap <F8> :TagbarToggle<CR>
 
 " ================= ALE
-let g:ale_completion_enabled = 1
-let g:ale_sign_error = '>>'
-let g:ale_sign_warning = '--'
-let g:airline#extensions#ale#enabled = 1
 nmap <F3> :ALEToggle<CR>
+
+let g:ale_lint_on_enter = 0
+let g:ale_completion_enabled = 1
+let g:ale_sign_error = '►'
+let g:ale_sign_warning = '▸'
+let g:airline#extensions#ale#enabled = 1
 
 " ================= YOUCOMPLETEME
 let g:ycm_auto_trigger = 1
