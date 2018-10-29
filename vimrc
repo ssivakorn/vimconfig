@@ -112,13 +112,12 @@ set nofoldenable                "Dont fold by default
 set clipboard+=unnamedplus
 
 " ================= FANCY COLORS =====================
-silent set termguicolors        "Enable full color supported
+                                "Enable full color supported
+silent set termguicolors
 if &term =~# '^screen'
-    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    silent let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    silent let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
-
-set t_Co=256
 
 set background=dark             "Set background dark
 "let g:python_highlight_all = 1  "Enable python syntax highlight
@@ -131,7 +130,7 @@ silent let g:airline_theme = 'powerlineish'
 silent hi clear ALEErrorSign
 silent hi clear ALEWarningSign
 silent hi ALEErrorSign ctermbg=NONE ctermfg=red guifg=#FF0000
-silent hi ALEWarningSign ctermbg=NONE ctermfg=yellow guifg=#FFFF00
+silent hi ALEWarningSign ctermbg=NONE ctermfg=white guifg=#FFFFFF
 
 autocmd FileType tex,latex
     \ set background=dark |
@@ -173,7 +172,6 @@ function! SetColor()
     hi CursorLineNR ctermfg=208 guifg=#ff8700 ctermbg=NONE guibg=NONE
 
 endfunction
-
 autocmd FileType * call SetColor()
 
 
