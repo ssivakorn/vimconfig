@@ -1,5 +1,5 @@
 # vimconfig
-My simple vimrc configuration for vim and neovim Linux/Mac environments.
+My simple vimrc configuration for vim and neovim Linux/Mac environments :smiley:
 
 ## Features
 Basic vim configures, some nices plugins and colorschemes for coding including
@@ -7,7 +7,6 @@ Basic vim configures, some nices plugins and colorschemes for coding including
 #### Plugins:
 - vim-airline 
 - vim-airline-themes
-- Valloric/YouCompleteMe
 - davidhalter/jedi-vim
 - sheerun/vim-polyglot
 - Yggdroot/indentLine
@@ -30,11 +29,10 @@ Basic vim configures, some nices plugins and colorschemes for coding including
 For the updated list: https://github.com/ssivakorn/vimconfig/blob/master/vimrc-plugins
 
 ## Installation
-### To install
+### To install :smile:
 ```shell
 $ ./install
 ```
-
 ### Dependencies:
 - curl (https://curl.haxx.se/)
 - git (https://git-scm.com/)
@@ -42,7 +40,7 @@ $ ./install
 - python3, python3-dev
 
 
-### To uninstall
+### To uninstall :disappointed:
 ```shell
 $ ./uninstall
 ```
