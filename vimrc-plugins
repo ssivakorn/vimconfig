@@ -47,38 +47,13 @@ syntax on
 filetype plugin indent on
 
 " ================= PLUGINS CONFIGURATION =====================================
+
 " ================= AIRLINE
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_symbols_ascii=1
 let g:airline_exclude_preview=1
-"" ================= SYNTASTIC
-" let g:syntastic_mode_map = {
-"        \ 'mode': 'active',
-"        \ 'active_filetypes':   ['python', 'html', 'javascript', 'c'],
-"        \ 'passive_filetypes':  ['java'] }
-"
-" highlight SyntasticWarning NONE
-" highlight SyntasticError NONE
-"
-" let g:syntastic_echo_current_error = 1
-" let g:syntastic_error_symbol='xx'
-" let g:syntastic_warning_symbol='!!'
-" let g:syntastic_check_on_wq = 1
-"
-" "let g:syntastic_style_error_symbol='>>'
-" "let g:syntastic_style_warning_symbol='>>'
-" "let g:syntastic_always_populate_loc_list = 1
-" "let g:syntastic_auto_loc_list = 1
-"
-" let g:syntastic_python_checkers = ['pyflakes']
-" let g:syntastic_html_checkers = ['w3']
-" let g:syntastic_c_compiler = 'gcc'
-"
-" " Disable some verbosy syntax checkers
-" let g:syntastic_python_pylint_args = '-d C0111 -d C0326 -d C0103'
-" let g:syntastic_python_python_use_codec = 1
-"
+
 " ================= INDENTLINE
 let g:indentLine_enabled = 1
 let g:indentLine_setConceal = 0
@@ -102,13 +77,12 @@ let g:ale_sign_error = '●'
 let g:ale_sign_warning = '●'
 let g:airline#extensions#ale#enabled = 1
 
+" ================= DEOPLETE
+set completeopt-=preview
+let g:deoplete#enable_at_startup = 0
+let b:deoplete_ignore_sources = ['python']
+
 " ================= JEDI-VIM
 let g:jedi#completions_enabled = 1
 let g:jedi#show_call_signatures = 1
 let g:jedi#show_call_signatures_delay = 0
-
-
-set completeopt-=preview
-let g:deoplete#enable_at_startup = 1
-autocmd FileType python  let b:deoplete_disable_auto_complete = 0
-
