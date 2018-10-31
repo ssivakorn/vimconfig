@@ -28,7 +28,7 @@ Plug 'jiangmiao/auto-pairs'             "insert/delete brackets, quotes, etc.
 Plug 'scrooloose/nerdtree'              "tree explorer
 Plug 'majutsushi/tagbar'                "tagbar
 Plug 'w0rp/ale'                         "asynchronous lint engine
-Plug 'tomtom/tcomment_vim'              "comment
+Plug 'tpope/vim-commentary'             "comment
 
 " ================= COLORSCHEME
 Plug 'tomasr/molokai'
@@ -90,3 +90,4 @@ autocmd FileType python
 let g:jedi#completions_enabled = 1
 let g:jedi#show_call_signatures = 1
 let g:jedi#show_call_signatures_delay = 0
+
