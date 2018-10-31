@@ -2,8 +2,9 @@
 filetype off
 call plug#begin('~/.vim/plugged')
 
-Plug 'vim-airline/vim-airline'			"status line
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
+" Plug 'vim-airline/vim-airline'			"status line
+" Plug 'vim-airline/vim-airline-themes'
 
                                         "autocomplete
 if has('nvim')
@@ -49,10 +50,10 @@ filetype plugin indent on
 " ================= PLUGINS CONFIGURATION =====================================
 
 " ================= AIRLINE
-let g:airline_left_sep=''
-let g:airline_right_sep=''
-let g:airline_symbols_ascii=1
-let g:airline_exclude_preview=1
+" let g:airline_left_sep=''
+" let g:airline_right_sep=''
+" let g:airline_symbols_ascii=1
+" let g:airline_exclude_preview=1
 
 " ================= INDENTLINE
 let g:indentLine_enabled = 1

@@ -24,7 +24,6 @@ set linebreak                   "Wrap lines at convenient points
 set list                        "Enable listchars
 set listchars=tab:\ \ ,trail:·  "Set trails for tabs and spaces
 
-
 "" Disable bells
 set noerrorbells
 set novisualbell
@@ -117,6 +116,10 @@ silent set termguicolors
 if &term =~# '^screen'
     silent let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
     silent let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
+
+if !has('gui_running')
+  set t_Co=256
 endif
 
 set background=dark             "Set background dark
