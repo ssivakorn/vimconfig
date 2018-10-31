@@ -79,8 +79,12 @@ let g:airline#extensions#ale#enabled = 1
 
 " ================= DEOPLETE
 set completeopt-=preview
-let g:deoplete#enable_at_startup = 0
+let g:deoplete#enable_at_startup = 1
+
+"ignore python, use jedi-vim
 let b:deoplete_ignore_sources = ['python']
+autocmd FileType python 
+            \ call deoplete#custom#buffer_option('auto_complete', v:false)
 
 " ================= JEDI-VIM
 let g:jedi#completions_enabled = 1
