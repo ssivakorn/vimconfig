@@ -32,6 +32,11 @@ autocmd VimEnter * set vb t_vb=
 
 let g:tex_flavor = "latex"      "Latex favor
 
+" Temporary fix for cursor not blink in neovim
+if has('nvim')
+    set guicursor=n:blinkon1
+endif
+
 " ================= TURN OFF SWAP FILES ==============
 set noswapfile
 set nobackup

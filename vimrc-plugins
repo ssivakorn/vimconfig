@@ -30,6 +30,9 @@ Plug 'scrooloose/nerdtree'              "tree explorer
 Plug 'majutsushi/tagbar'                "tagbar
 Plug 'w0rp/ale'                         "asynchronous lint engine
 Plug 'tpope/vim-commentary'             "comment
+"Plug 'tmhedberg/SimpylFold'             "vim fold for python
+Plug 'tweekmonster/braceless.vim'
+Plug 'godlygeek/tabular'
 
 " ================= COLORSCHEME
 Plug 'tomasr/molokai'
@@ -92,3 +95,6 @@ let g:jedi#completions_enabled = 1
 let g:jedi#show_call_signatures = 1
 let g:jedi#show_call_signatures_delay = 0
 
+" let g:SimpylFold_docstring_preview = 0
+" let g:SimpylFold_fold_docstring = 0
+" let g:SimpylFold_fold_import = 0
