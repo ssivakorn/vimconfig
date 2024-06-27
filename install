@@ -20,9 +20,8 @@ check_dependency 'python'
 # vim
 echo "[+] setting up vim configure ..."
 mkdir -p $HOME/.vim
-cp vimrc $HOME/.vimrc
-cp vimrc-plugins $HOME/.vimrc-plugins
-cp vimrc-plugins-configure $HOME/.vimrc-plugins-configure
+ln -s vimrc $HOME/.vimrc
+ln -s vimrc-plugins $HOME/.vimrc-plugins
 
 echo "[+] installing vimplug ..."
 curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs \
@@ -31,23 +30,24 @@ curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs \
 echo "[+] installing vimplugins ..."
 vim +PlugInstall +qall
 
-echo "[+] installing clang-completer ..."
-$HOME/.vim/plugged/YouCompleteMe/install.sh --clang-completer
+# install deoplete
+# https://github.com/Shougo/deoplete.nvim
+# pip install --user pynvim
 
 # neovim
-check_dependency 'nvim'
+# check_dependency 'nvim'
 
-echo "[+] setting up neovim configure ..."
-mkdir -p $HOME/.config
-mkdir -p $HOME/.config/nvim
-cp vimrc $HOME/.config/nvim/init.vim
+# echo "[+] setting up neovim configure ..."
+# mkdir -p $HOME/.config
+# mkdir -p $HOME/.config/nvim
+# ln -s vimrc $HOME/.config/nvim/init.vim
 
-echo "[+] updating neovim ..."
-pip2 install --user neovim --upgrade
-pip3 install --user neovim --upgrade
+# echo "[+] updating neovim ..."
+# pip2 install --user neovim --upgrade
+# pip3 install --user neovim --upgrade
 
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+# curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+#         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-echo "[+] installing vimplugins ..."
-nvim +PlugInstall +qall
+# echo "[+] installing vimplugins ..."
+# nvim +PlugInstall +qall

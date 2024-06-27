@@ -1,7 +1,6 @@
 #!/bin/bash
 rm -rf $HOME/.vimrc
 rm -rf $HOME/.vimrc-plugins
-rm -rf $HOME/.vimrc-plugins-configure
 rm -rf $HOME/.vim
 
 rm -rf $HOME/.config/nvim

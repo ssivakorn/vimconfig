@@ -44,9 +44,9 @@ set nowb
 
 " ================= PERSISTENT UNDO ==================
 " Keep undo history across sessions, by storing in file.
-silent !mkdir ~/.config/nvim/backups > /dev/null 2>&1
-set undodir=~/.config/nvim/backups
-set undofile
+" silent !mkdir ~/.config/nvim/backups > /dev/null 2>&1
+" set undodir=~/.config/nvim/backups
+" set undofile
 
 " ================= INDENTATION ======================
 set autoindent                  "Auto indent
@@ -113,7 +113,11 @@ set nofoldenable                "Dont fold by default
 "endif
 "
 " ================= COPY PASTE =======================
-set clipboard+=unnamedplus
+if system('uname -s') == "Darwin\n"
+    set clipboard=unnamed "Mac OSX
+else
+    set clipboard=unnamedplus "Linux
+endif
 
 " ================= FANCY COLORS =====================
                                 "Enable full color supported
@@ -181,5 +185,4 @@ function! SetColor()
 
 endfunction
 autocmd FileType * call SetColor()
-
 
