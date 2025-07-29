@@ -18,36 +18,19 @@ check_dependency 'git'
 check_dependency 'python'
 
 # vim
-echo "[+] setting up vim configure ..."
-mkdir -p $HOME/.vim
-ln -s vimrc $HOME/.vimrc
-ln -s vimrc-plugins $HOME/.vimrc-plugins
+echo "[-] remove previous installation ..."
+sh uninstall
 
-echo "[+] installing vimplug ..."
+echo "[+] set up vim configure ..."
+mkdir -p $HOME/.vim
+path=$(pwd)
+
+ln -s -f $path/vimrc $HOME/.vimrc
+ln -s -f $path/vimrc-plugins $HOME/.vimrc-plugins
+
+echo "[+] install vimplug ..."
 curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-echo "[+] installing vimplugins ..."
-vim +PlugInstall +qall
-
-# install deoplete
-# https://github.com/Shougo/deoplete.nvim
-# pip install --user pynvim
-
-# neovim
-# check_dependency 'nvim'
-
-# echo "[+] setting up neovim configure ..."
-# mkdir -p $HOME/.config
-# mkdir -p $HOME/.config/nvim
-# ln -s vimrc $HOME/.config/nvim/init.vim
-
-# echo "[+] updating neovim ..."
-# pip2 install --user neovim --upgrade
-# pip3 install --user neovim --upgrade
-
-# curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-#         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-# echo "[+] installing vimplugins ..."
-# nvim +PlugInstall +qall
+echo "[+] install vim plugins ..."
+vim -u $HOME/.vimrc-plugins +PlugInstall +qall

@@ -2,23 +2,19 @@
 filetype off
 call plug#begin('~/.vim/plugged')
 
-Plug 'itchyny/lightline.vim'
-if has('nvim')
- 	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  	Plug 'Shougo/deoplete.nvim'
-  	Plug 'roxma/nvim-yarp'
-  	Plug 'roxma/vim-hug-neovim-rpc'
-endif
+" if has('nvim')
+"   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" else
+"   Plug 'Shougo/deoplete.nvim'
+"   Plug 'roxma/nvim-yarp'
+"   Plug 'roxma/vim-hug-neovim-rpc'
+" endif
+" let g:deoplete#enable_at_startup = 1
 
+Plug 'itchyny/lightline.vim'            "status line
 Plug 'Shougo/neco-syntax'               "languages
                                         "emoji
-" Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
-" Plug 'fszymanski/deoplete-emoji'
-
-" Plug 'davidhalter/jedi-vim'             "python
 Plug 'sheerun/vim-polyglot'             "language packs: syntax, indent
-
 Plug 'Yggdroot/indentLine'              "draw indent line
 Plug 'ervandew/supertab'				"autocomplete with tab
 Plug 'jiangmiao/auto-pairs'             "insert/delete brackets, quotes, etc.
@@ -30,6 +26,7 @@ Plug 'tweekmonster/braceless.vim'
 Plug 'godlygeek/tabular'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+
 
 " ================= COLORSCHEME
 Plug 'tomasr/molokai'
@@ -44,6 +41,7 @@ Plug 'romainl/flattened'
 Plug 'sjl/badwolf'
 
 call plug#end()
+
 syntax on
 filetype plugin indent on
 
@@ -79,8 +77,8 @@ let g:ale_sign_warning = '●'
 let g:airline#extensions#ale#enabled = 1
 
 " ================= DEOPLETE
-set completeopt-=preview
-let g:deoplete#enable_at_startup = 1
+" set completeopt-=preview
+" let g:deoplete#enable_at_startup = 1
 
 "ignore python, use jedi-vim
 " let b:deoplete_ignore_sources = ['python']
