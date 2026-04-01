@@ -15,7 +15,7 @@ check_dependency()
 # installer requirement checks
 check_dependency 'curl'
 check_dependency 'git'
-check_dependency 'python'
+check_dependency 'python3'
 
 # vim
 echo "[-] remove previous installation ..."
