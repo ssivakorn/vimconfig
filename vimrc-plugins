@@ -23,10 +23,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'tomasr/molokai'
 Plug 'sickill/vim-monokai'
 Plug 'pthk/vim-luna'
-Plug 'dracula/vim'
 Plug 'nanotech/jellybeans.vim'
-Plug 'tyrannicaltoucan/vim-quantum'
-Plug 'rakr/vim-one'
 Plug 'morhetz/gruvbox'
 Plug 'romainl/flattened'
 Plug 'sjl/badwolf'
@@ -59,5 +56,4 @@ let g:ale_lint_on_enter = 1
 let g:ale_completion_enabled = 1
 let g:ale_sign_error = '●'
 let g:ale_sign_warning = '●'
-let g:airline#extensions#ale#enabled = 1
 
