@@ -32,21 +32,10 @@ autocmd VimEnter * set vb t_vb=
 
 let g:tex_flavor = "latex"      "Latex favor
 
-" Temporary fix for cursor not blink in neovim
-if has('nvim')
-    set guicursor=n:blinkon1
-endif
-
 " ================= TURN OFF SWAP FILES ==============
 set noswapfile
 set nobackup
 set nowb
-
-" ================= PERSISTENT UNDO ==================
-" Keep undo history across sessions, by storing in file.
-" silent !mkdir ~/.config/nvim/backups > /dev/null 2>&1
-" set undodir=~/.config/nvim/backups
-" set undofile
 
 " ================= INDENTATION ======================
 set autoindent                  "Auto indent
@@ -64,16 +53,10 @@ set cindent
 autocmd FileType make setlocal noexpandtab
 
 " ================ CURSOR =============================
-" Restore cursor position to where it was before
-"au BufWinLeave ?* mkview 1
-"au BufWinEnter ?* silent loadview 1
 au BufReadPost *
      \ if line("'\"") > 0 && line("'\"") <= line("$") |
      \   exe "normal! g`\"" |
      \ endif
-
-"Enable mouse control
-"set mouse=a
 
 " Enable cursorline
 augroup CursorLine
@@ -88,30 +71,10 @@ set incsearch                   "Find the next match as we type the search
 set hlsearch                    "Hilight searches by default
 nnoremap <esc><esc> :silent! nohlsearch<cr>
                                 "Double ESC to disable hilight searches
-"set viminfo='100,f1            "Save up to 100 marks, enable capital marks
-
 " ================= FOLDS ============================
 set foldmethod=indent           "Fold based on indent
 set nofoldenable                "Dont fold by default
-"set foldnestmax=3              "Deepest fold is 3 levels
 
-
-" ================= SCROLLING ========================
-"set scrolloff=8                "Start scrolling when we're 8 lines away from margins
-"set sidescrolloff=15
-"set sidescroll=1
-"set cul!
-"set grepprg=grep\ -nH\ $*
-
-"" ================ KEY MAP ==========================
-"if &term =~ '^screen'
-"    "TMUX will send xterm-style keys when its xterm-keys option is on
-"    execute "set <xUp>=\e[1;*A"
-"    execute "set <xDown>=\e[1;*B"
-"    execute "set <xRight>=\e[1;*C"
-"    execute "set <xLeft>=\e[1;*D"
-"endif
-"
 " ================= COPY PASTE =======================
 if system('uname -s') == "Darwin\n"
     set clipboard=unnamed "Mac OSX
@@ -135,8 +98,6 @@ set background=dark             "Set background dark
 "let g:python_highlight_all = 1  "Enable python syntax highlight
 
 silent colorscheme molokai      "Set default theme
-silent let g:airline_theme = 'powerlineish'
-                                "Set status-line theme
 
 " Set color for error and warning signs
 silent hi clear ALEErrorSign

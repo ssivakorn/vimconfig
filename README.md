@@ -2,12 +2,10 @@
 My simple vimrc configuration for vim and neovim Linux/Mac environments :smiley:
 
 ## Features
-Basic vim configures, some nices plugins and colorschemes for coding including
+Basic vim configures, some nice plugins and colorschemes for coding including
 
 #### Plugins:
-- vim-airline 
-- vim-airline-themes
-- davidhalter/jedi-vim
+- itchyny/lightline.vim
 - sheerun/vim-polyglot
 - Yggdroot/indentLine
 - ervandew/supertab
@@ -15,16 +13,18 @@ Basic vim configures, some nices plugins and colorschemes for coding including
 - scrooloose/nerdtree
 - majutsushi/tagbar
 - w0rp/ale
+- tpope/vim-commentary
+- godlygeek/tabular
+- junegunn/fzf + fzf.vim
 
 #### Colorschemes:
 - tomasr/molokai
 - pthk/vim-luna
-- nielsmadan/harlequin
-- dracula/vim
+- sickill/vim-monokai
 - nanotech/jellybeans.vim
-- tyrannicaltoucan/vim-quantum
-- rakr/vim-one
-- mhartington/oceanic-next
+- morhetz/gruvbox
+- romainl/flattened
+- sjl/badwolf
 
 For the updated list: https://github.com/ssivakorn/vimconfig/blob/master/vimrc-plugins
 
@@ -34,10 +34,10 @@ For the updated list: https://github.com/ssivakorn/vimconfig/blob/master/vimrc-p
 $ ./install
 ```
 ### Dependencies:
-- curl (https://curl.haxx.se/)
-- git (https://git-scm.com/)
+- curl
+- git
 - exuberant-ctags
-- python3, python3-dev
+- python3
 
 
 ### To uninstall :disappointed:
