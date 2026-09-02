@@ -107,7 +107,7 @@ silent hi ALEWarningSign ctermbg=NONE ctermfg=white guifg=#FFFFFF
 
 autocmd FileType tex,latex
     \ set background=dark |
-    \ colorscheme base16-macintosh |
+    \ colorscheme molokai |
     \ set spell
 
 autocmd FileType sh colorscheme luna
