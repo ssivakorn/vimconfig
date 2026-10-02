@@ -24,7 +24,7 @@ set linebreak                   "Wrap lines at convenient points
 set list                        "Enable listchars
 set listchars=tab:\ \ ,trail:·  "Set trails for tabs and spaces
 
-"" Disable bells
+" Disable bells
 set noerrorbells
 set novisualbell
 set tm=500
@@ -52,7 +52,7 @@ set cindent
 "Setting makefiles with tabs, not spaces
 autocmd FileType make setlocal noexpandtab
 
-" ================ CURSOR =============================
+" ================ CURSOR AND MOUSE ==================
 au BufReadPost *
      \ if line("'\"") > 0 && line("'\"") <= line("$") |
      \   exe "normal! g`\"" |
@@ -64,6 +64,9 @@ augroup CursorLine
     au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
     au WinLeave * setlocal nocursorline
 augroup END
+
+" Enable mouse
+set mouse=a
 
 " ================= SEARCH ===========================
 set ignorecase                  "Ignore case when searching
